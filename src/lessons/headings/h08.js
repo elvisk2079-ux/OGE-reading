@@ -1,0 +1,73 @@
+const L = {
+  id: "h08",
+  title: "Scotland — Шотландия",
+  sub: "30 новых слов из текста ОГЭ «Scotland».",
+  words: [
+    { id: "magical", en: "magical", ru: "волшебный", pos: "adj", gap: "Scotland is often seen by the rest of the world as a ___ country.", ans: "magical" },
+    { id: "misty", en: "misty", ru: "туманный", pos: "adj", gap: "Scotland is a land of ___ mountains.", ans: "misty" },
+    { id: "creature", en: "creature", ru: "существо", pos: "n", gap: "Scotland is the home of a lake ___ called Nessie.", ans: "creature" },
+    { id: "image", en: "image", ru: "образ, изображение", pos: "n", gap: "This is the ___ most people have in mind.", ans: "image" },
+    { id: "inmind", en: "have in mind", ru: "представлять себе, иметь в виду", pos: "ph", gap: "This is the image most people ___.", ans: "have in mind" },
+    { id: "completely", en: "completely", ru: "полностью, совершенно", pos: "adv", gap: "The truth, however, is ___ different from the way the world thinks of Scotland.", ans: "completely" },
+    { id: "surprised", en: "surprised", ru: "удивлённый", pos: "adj", gap: "You may be ___ to find out that most Scots live in the lowlands.", ans: "surprised" },
+    { id: "believe", en: "believe in", ru: "верить в", pos: "ph", gap: "Most Scots live in the lowlands and don't ___ Nessie.", ans: "believe in" },
+    { id: "picturesque", en: "picturesque", ru: "живописный", pos: "adj", gap: "Scotland is much more than green hills and ___ valleys.", ans: "picturesque" },
+    { id: "valley", en: "valley", ru: "долина", pos: "n", hl: ["valleys"], gap: "Scotland is much more than green hills and picturesque ___.", ans: "valleys" },
+    { id: "invention", en: "invention", ru: "изобретение", pos: "n", gap: "It's dynamic and cosmopolitan, with a colourful history of ___ and innovation.", ans: "invention" },
+    { id: "contemporary", en: "contemporary", ru: "современный", pos: "adj", gap: "Each year, it hosts the world's biggest ___ arts festivals.", ans: "contemporary" },
+    { id: "bush", en: "bush", ru: "куст", pos: "n", gap: "Scottish heather, a small ___ with flowers, is the floral symbol of the country.", ans: "bush" },
+    { id: "vary", en: "vary", ru: "различаться, меняться", pos: "v", hl: ["varies"], gap: "The colour of the flowers usually ___ from purple to lilac.", ans: "varies" },
+    { id: "capture", en: "capture", ru: "взять в плен, захватить", pos: "v", hl: ["captured"], gap: "The Scots believed that they would never be ___ by enemies.", ans: "captured" },
+    { id: "enemy", en: "enemy", ru: "враг", pos: "n", hl: ["enemies"], gap: "The Scots believed that they would never be captured by ___.", ans: "enemies" },
+    { id: "victory", en: "victory", ru: "победа", pos: "n", hl: ["victories"], gap: "They believed they would win ___ if they wore white heather.", ans: "victories" },
+    { id: "married", en: "get married", ru: "выйти замуж, жениться", pos: "ph", hl: ["getting married"], gap: "Today, when ___, girls add white heather to bouquets.", ans: "getting married" },
+    { id: "fortune", en: "fortune", ru: "удача; богатство", pos: "n", gap: "Girls add white heather to bouquets to bring ___ to their family.", ans: "fortune" },
+    { id: "essential", en: "essential", ru: "необходимый, очень важный", pos: "adj", gap: "Heather is an ___ thing for any household.", ans: "essential" },
+    { id: "household", en: "household", ru: "дом, хозяйство, семья", pos: "n", gap: "Heather is an essential thing for any ___.", ans: "household" },
+    { id: "dried", en: "dried", ru: "сушёный", pos: "adj", gap: "Traditionally ___ heather was used to make perfumes.", ans: "dried" },
+    { id: "rope", en: "rope", ru: "верёвка, канат", pos: "n", hl: ["ropes"], gap: "The tough stems were used to make ___.", ans: "ropes" },
+    { id: "destination", en: "destination", ru: "место для поездки, пункт назначения", pos: "n", gap: "Scotland is an excellent ___ for open-air activities all year round.", ans: "destination" },
+    { id: "coastline", en: "coastline", ru: "береговая линия, побережье", pos: "n", gap: "Its lakes and ___ are ideal for boating and rowing.", ans: "coastline" },
+    { id: "value", en: "value", ru: "ценить", pos: "v", hl: ["valued"], gap: "The Scots have always ___ physical power.", ans: "valued" },
+    { id: "skill", en: "skill", ru: "навык, умение", pos: "n", hl: ["skills"], gap: "The Scots have always valued physical power and the ___ needed for battle.", ans: "skills" },
+    { id: "survival", en: "survival", ru: "выживание", pos: "n", gap: "They valued the skills needed for battle and ___.", ans: "survival" },
+    { id: "competition", en: "competition", ru: "соревнование, конкурс", pos: "n", hl: ["competitions"], gap: "The Games include the athletic ___ in their original form.", ans: "competitions" },
+    { id: "accompany", en: "accompany", ru: "сопровождать", pos: "v", hl: ["accompanies"], gap: "Traditional bagpipe music ___ all the events.", ans: "accompanies" }
+  ],
+  forms: [
+    { id: "surprised", s: "I was ___ to see him at the party.", o: ["surprise", "surprised", "surprising"], a: "surprised" },
+    { id: "surprised", s: "The end of the film was really ___.", o: ["surprise", "surprised", "surprising"], a: "surprising" },
+    { id: "believe", s: "Do you believe ___ ghosts?", o: ["in", "to", "at"], a: "in" },
+    { id: "vary", s: "The weather ___ from day to day.", o: ["vary", "varies", "various"], a: "varies" },
+    { id: "vary", s: "This shop sells ___ kinds of bread.", o: ["vary", "various", "varies"], a: "various" },
+    { id: "married", s: "My sister got ___ last summer.", o: ["marry", "married", "marriage"], a: "married" },
+    { id: "essential", s: "Water is ___ for life.", o: ["essence", "essential", "essentially"], a: "essential" },
+    { id: "invention", s: "Who ___ the telephone?", o: ["invent", "invented", "invention"], a: "invented" },
+    { id: "invention", s: "The ___ of the telephone changed the world.", o: ["invent", "inventor", "invention"], a: "invention" },
+    { id: "value", s: "I ___ your friendship very much.", o: ["value", "valuable", "values"], a: "value" },
+    { id: "competition", s: "Ten schools took part in the ___.", o: ["compete", "competition", "competitive"], a: "competition" },
+    { id: "completely", s: "The film is ___ different from the book.", o: ["complete", "completely", "completion"], a: "completely" },
+    { id: "victory", s: "Our team won an important ___ yesterday.", o: ["victory", "victories", "victorious"], a: "victory" }
+  ],
+  task: {
+    type: "headings", extra: 3,
+    questions: [
+      "What goods were made from the plant, the symbol of Scotland?",
+      "What is the national sporting event of the country?",
+      "What endangered plants grow in the Scottish Highlands?",
+      "What plant brings luck and success?",
+      "What is the stereotype of Scotland like?",
+      "Why is Scotland an attractive place for those who love sports?",
+      "What is the modern profile of Scotland like?"
+    ],
+    key: { A: 5, B: 7, C: 4, D: 1, E: 6, F: 2 },
+    parts: [
+      { l: "A", t: "Thanks to television and films, Scotland is often seen by the rest of the world as a magical country, a land of misty mountains and the home of a lake creature called Nessie. This is the image most people have in mind. The truth, however, is completely different from the way the world thinks of Scotland. You may be surprised to find out that most Scots live in the lowlands and don’t believe in Nessie." },
+      { l: "B", t: "Scotland is much more than green hills and picturesque valleys. It’s dynamic and cosmopolitan, with a colourful history of invention and innovation. It’s the home of big businesses and a centre of new medical and scientific development. Each year, it hosts the world's biggest contemporary arts festivals." },
+      { l: "C", t: "Scottish heather, a small bush with flowers, is the floral symbol of the country. The colour of the flowers usually varies from purple to lilac, but they can also be white. In the past, the Scots believed that they would never be captured by enemies and would win victories if they wore white heather. Today, when getting married, girls add white heather to bouquets to bring fortune to their family." },
+      { l: "D", t: "Heather has grown in Scotland as far back as its history goes. It is an essential thing for any household. Famous heather honey is rich in minerals, and was traditionally used in medicinal drinks. Traditionally dried heather was used to make perfumes, and the tough stems were used to make ropes. On many of the northern Scottish islands, heather was used in the construction of houses." },
+      { l: "E", t: "Scotland is an excellent destination for open-air activities all year round. Its lakes and coastline are ideal for boating and rowing and have some of the best sea-kayaking in the world. The rivers are perfect for fishing and the mountains are wonderful for hill climbing and skiing. Scotland is also good for walkers. You can enjoy easy family walks or more difficult mountain hikes." },
+      { l: "F", t: "The history of Scotland is rich in armed conflicts. The Scots have always valued physical power and the skills needed for battle and survival. That’s why the Highland Games were very popular. They date back to long before Scotland’s written history. The Games are still held today and include the athletic competitions in their original form as well as dancing contests. Traditional bagpipe music accompanies all the events." }
+    ]
+  }
+};

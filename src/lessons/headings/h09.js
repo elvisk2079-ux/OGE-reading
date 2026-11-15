@@ -1,0 +1,73 @@
+const L = {
+  id: "h09",
+  title: "Ireland — Ирландия",
+  sub: "30 новых слов из текста ОГЭ «Ireland».",
+  words: [
+    { id: "picture", en: "picture", ru: "представлять себе; картина", pos: "v", gap: "When you think of the Irish, you often ___ a red-haired person.", ans: "picture" },
+    { id: "redhaired", en: "red-haired", ru: "рыжий, рыжеволосый", pos: "adj", gap: "You often picture a ___ person dressed all in green.", ans: "red-haired" },
+    { id: "dressed", en: "dressed", ru: "одетый", pos: "adj", gap: "You often picture a red-haired person ___ all in green.", ans: "dressed" },
+    { id: "myth", en: "myth", ru: "миф", pos: "n", hl: ["myths"], gap: "However, it's just a popular ___.", ans: "myth" },
+    { id: "customary", en: "customary", ru: "принятый, обычный (по традиции)", pos: "adj", gap: "It's ___ in Ireland to wear green clothes only on St. Patrick's Day.", ans: "customary" },
+    { id: "trick", en: "trick", ru: "обманывать, вводить в заблуждение", pos: "v", hl: ["tricked"], gap: "Lots of people are ___ by this cliché.", ans: "tricked" },
+    { id: "fairy", en: "fairy", ru: "фея", pos: "n", hl: ["fairies"], gap: "Green is the favourite color of the Good People (the proper name for ___).", ans: "fairies" },
+    { id: "likely", en: "be likely to", ru: "скорее всего, вероятно (сделает)", pos: "ph", alt: ["likely to"], hl: ["likely to"], gap: "Myths run that they are ___ steal people, especially children.", ans: "likely to" },
+    { id: "wedding", en: "wedding", ru: "свадьба", pos: "n", gap: "In the past, a girl would never wear anything green on her ___ day.", ans: "wedding" },
+    { id: "custom", en: "custom", ru: "обычай", pos: "n", hl: ["customs"], gap: "People try to keep the old Irish ___.", ans: "customs" },
+    { id: "sign", en: "sign", ru: "знак, признак", pos: "n", gap: "Families leave milk and bread on the table as a ___ of friendliness and kindness.", ans: "sign" },
+    { id: "friendliness", en: "friendliness", ru: "дружелюбие", pos: "n", gap: "Families leave milk and bread on the table as a sign of ___ and kindness.", ans: "friendliness" },
+    { id: "kindness", en: "kindness", ru: "доброта", pos: "n", gap: "Families leave milk and bread on the table as a sign of friendliness and ___.", ans: "kindness" },
+    { id: "unlocked", en: "unlocked", ru: "незапертый", pos: "adj", gap: "Another custom is to leave the door ___.", ans: "unlocked" },
+    { id: "lit", en: "lit", ru: "зажжённый", pos: "adj", gap: "A ___ candle is left in a window during the night.", ans: "lit" },
+    { id: "represent", en: "represent", ru: "символизировать, означать", pos: "v", hl: ["represents"], gap: "It ___ help for any traveller who is passing by.", ans: "represents" },
+    { id: "passby", en: "pass by", ru: "проходить (проезжать) мимо", pos: "v", hl: ["passing by"], gap: "It represents help for any traveller who is ___.", ans: "passing by" },
+    { id: "substantial", en: "substantial", ru: "сытный, основательный", pos: "adj", gap: "Irish people enjoy good and ___ food.", ans: "substantial" },
+    { id: "basis", en: "basis", ru: "основа", pos: "n", gap: "The ___ for many traditional Irish dishes is potatoes.", ans: "basis" },
+    { id: "mashed", en: "mashed", ru: "толчёный, в виде пюре", pos: "adj", gap: "Potatoes are eaten boiled, ___, fried and baked.", ans: "mashed" },
+    { id: "fried", en: "fried", ru: "жареный", pos: "adj", gap: "Potatoes are eaten boiled, mashed, ___ and baked.", ans: "fried" },
+    { id: "baked", en: "baked", ru: "печёный, запечённый", pos: "adj", gap: "Potatoes are eaten boiled, mashed, fried and ___.", ans: "baked" },
+    { id: "cabbage", en: "cabbage", ru: "капуста", pos: "n", gap: "Potatoes are mixed with ___ or green onions.", ans: "cabbage" },
+    { id: "situation", en: "situation", ru: "ситуация", pos: "n", hl: ["situations"], gap: "Shamrock helps in different ___.", ans: "situations" },
+    { id: "owner", en: "owner", ru: "владелец, хозяин", pos: "n", gap: "It saves its ___ from bad luck.", ans: "owner" },
+    { id: "condition", en: "condition", ru: "условие", pos: "n", hl: ["conditions"], gap: "There are certain ___ to be met so that its power remains strong.", ans: "conditions" },
+    { id: "power", en: "power", ru: "сила, власть", pos: "n", gap: "There are certain conditions to be met so that its ___ remains strong.", ans: "power" },
+    { id: "nativeland", en: "native land", ru: "родина", pos: "n", gap: "Ireland is known as the ___ of limericks.", ans: "native land" },
+    { id: "humorous", en: "humorous", ru: "юмористический, смешной", pos: "adj", gap: "Limericks are short ___ poems that have five lines.", ans: "humorous" },
+    { id: "fond", en: "be fond of", ru: "любить, увлекаться", pos: "ph", alt: ["fond of"], hl: ["fond of"], gap: "Lots of poets and writers were ___ limericks.", ans: "fond of" }
+  ],
+  forms: [
+    { id: "dressed", s: "She was ___ in a beautiful blue dress.", o: ["dress", "dressed", "dressing"], a: "dressed" },
+    { id: "likely", s: "It's likely ___ tomorrow.", o: ["rain", "to rain", "raining"], a: "to rain" },
+    { id: "kindness", s: "My granny is very ___ — she always helps people.", o: ["kind", "kindness", "kindly"], a: "kind" },
+    { id: "kindness", s: "Thank you for your ___.", o: ["kind", "kindness", "kindly"], a: "kindness" },
+    { id: "unlocked", s: "Don't forget to ___ the door when you leave.", o: ["lock", "unlock", "locked"], a: "lock" },
+    { id: "owner", s: "Who is the ___ of this dog?", o: ["own", "owner", "owns"], a: "owner" },
+    { id: "fond", s: "I'm fond ___ music.", o: ["of", "in", "with"], a: "of" },
+    { id: "represent", s: "The dove ___ peace.", o: ["represent", "represents", "representing"], a: "represents" },
+    { id: "baked", s: "We ___ a cake for Mum's birthday yesterday.", o: ["bake", "baked", "baker"], a: "baked" },
+    { id: "fried", s: "I usually have ___ eggs for breakfast.", o: ["fry", "fried", "frying"], a: "fried" },
+    { id: "humorous", s: "It's a ___ story — we laughed a lot.", o: ["humour", "humorous", "humorously"], a: "humorous" },
+    { id: "friendliness", s: "The people in this town are very ___.", o: ["friend", "friendly", "friendliness"], a: "friendly" },
+    { id: "custom", s: "In Russia, it is a ___ to take off your shoes at home.", o: ["custom", "customs", "customary"], a: "custom" }
+  ],
+  task: {
+    type: "headings", extra: 2,
+    questions: [
+      "What old Irish traditions are still followed?",
+      "What vegetables are exported from Ireland to other countries?",
+      "What vegetable is very popular in Irish cuisine?",
+      "Why were Irish people afraid of wearing green in old times?",
+      "What made the Irish town popular?",
+      "What is wrong with the stereotype of an Irish person?",
+      "How can you keep the talisman effective?"
+    ],
+    key: { A: 6, B: 4, C: 1, D: 3, E: 7, F: 5 },
+    parts: [
+      { l: "A", t: "When you think of the Irish, you often picture a red-haired person dressed all in green. However, it’s just a popular myth. It’s customary in Ireland to wear green clothes only on St. Patrick’s Day. Lots of people are tricked by this cliché. In fact, originally, the colour associated with Saint Patrick was not green but blue." },
+      { l: "B", t: "In Ireland, the colour green was long considered to bring bad fortune. The reason is that, in Irish folklore, green is the favourite color of the Good People (the proper name for fairies). Myths run that they are likely to steal people, especially children, who wear too much of the colour. In the past, a girl would never wear anything green on her wedding day." },
+      { l: "C", t: "Christmas is a very important celebration in Ireland. People try to keep the old Irish customs. After dinner on Christmas Eve, it is still common for families to leave milk and bread on the table as a sign of friendliness and kindness. Another custom is to leave the door unlocked. A lit candle is left in a window during the night. It represents help for any traveller who is passing by." },
+      { l: "D", t: "Irish people enjoy good and substantial food. The basis for many traditional Irish dishes is potatoes which are eaten boiled, mashed, fried and baked. Potatoes are mixed with cabbage or green onions to make traditional Irish dishes. They are also made into potato cakes and used in soups or stews. It’s common to find potatoes cooked in two different ways on the same dinner plate." },
+      { l: "E", t: "In Ireland it is believed that shamrock brings good fortune to everyone. It helps in different situations and saves its owner from bad luck. There are certain conditions to be met so that its power remains strong: the owner of the shamrock must keep it away from the public eye and never give it to anyone else." },
+      { l: "F", t: "Ireland is known as the native land of limericks – short humorous poems that have five lines. They make people laugh and are easy to remember! Lots of poets and writers were fond of limericks. The word limerick probably comes from the Irish town of Limerick. The short poem has made the town known all over the world." }
+    ]
+  }
+};
