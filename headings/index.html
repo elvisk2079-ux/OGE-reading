@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Тексты с заголовками · ОГЭ · слова</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"><style>:root{
+  --paper:#FBF6EE;--card:#FFFFFF;--ink:#2B2420;--muted:#7A6E66;--line:#EADFD2;
+  --accent:#C8643B;--accent-soft:#F8E6DA;--teal:#2F6F6A;--teal-soft:#E1EFEC;
+  --ok:#2E8B57;--ok-soft:#E0F2E7;--bad:#C0392B;--bad-soft:#FBE3DF;--mark:#FFE7A8;
+  --r:14px;
+  --font-display:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+  --font-body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px}
+button{font:inherit;color:inherit;cursor:pointer}
+
+/* hero */
+.hero{padding-top:28px;padding-bottom:8px}
+.eyebrow{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 6px}
+h1{font-family:var(--font-display);font-weight:900;font-size:clamp(28px,7vw,40px);line-height:1.1;margin:0 0 8px}
+.sub{margin:0;color:var(--muted)}
+
+/* sticky progress */
+.bar{position:sticky;top:0;z-index:20;background:rgba(251,246,238,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:12px;padding-top:9px;padding-bottom:9px}
+.track{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#E39B5B);transition:width .4s}
+.count{font-size:14px;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+.count small{color:var(--muted);font-weight:600}
+
+main{padding:6px 0 80px}
+section.ex,a.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 16px;margin-top:18px;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.ex-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+h2{font-family:var(--font-display);font-weight:900;font-size:22px;line-height:1.2;margin:0}
+h2 .n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-size:15px;margin-right:8px;vertical-align:2px}
+.pill{flex:none;font-size:13px;font-weight:800;padding:3px 10px;border-radius:99px;background:var(--paper);border:1px solid var(--line);color:var(--muted);font-variant-numeric:tabular-nums}
+.pill.done{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.instr{color:var(--muted);margin:6px 0 14px;font-size:15px}
+
+/* flashcards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.fc{perspective:900px;height:112px;border:0;padding:0;background:none}
+.fc-in{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.fc.flip .fc-in{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc-f{background:var(--accent-soft);border:1px solid #EFCDB8}
+.fc-f b{font-size:17px;line-height:1.2}
+.fc-f small{color:var(--muted);font-size:12px;margin-top:4px}
+.fc-b{background:var(--teal-soft);border:1px solid #BFDCD7;transform:rotateY(180deg);font-size:15px;font-weight:700;color:var(--teal)}
+.say{border:0;background:none;font-size:18px;padding:2px 6px;line-height:1}
+.fc .say{position:absolute;top:4px;right:4px}
+
+/* items */
+.items{display:flex;flex-direction:column;gap:14px}
+.it{border-top:1px dashed var(--line);padding-top:12px}
+.it:first-child{border-top:0;padding-top:0}
+.q{margin:0 0 8px;font-weight:700}
+.q .k{color:var(--muted);font-weight:800;margin-right:6px;font-variant-numeric:tabular-nums}
+.q .gap{display:inline-block;min-width:70px;border-bottom:2px solid var(--accent);text-align:center;color:var(--accent)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:8px 13px;font-size:16px;font-weight:700;min-height:42px;text-align:left}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.opt.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad);text-decoration:line-through}
+.opt[disabled]{cursor:default}
+.locked .opt:not(.ok):not(.bad){opacity:.45}
+
+/* match */
+.mgroup{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.mgroup .opt{width:100%;font-size:15px}
+.mgroup .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.mgroup .opt.gone{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);opacity:.6}
+.mgroup .opt.shake{animation:sh .35s}
+@keyframes sh{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* typing */
+.row{display:flex;gap:8px}
+.inp{flex:1;min-width:0;font:inherit;font-size:17px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;outline:none}
+.inp:focus{border-color:var(--accent)}
+.inp.ok{border-color:var(--ok);background:var(--ok-soft);color:var(--ok);font-weight:700}
+.inp.bad{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
+.btn{border:0;background:var(--accent);color:#fff;border-radius:10px;padding:9px 16px;font-weight:800;font-size:16px}
+.btn.ghost{background:var(--paper);color:var(--ink);border:1.5px solid var(--line)}
+.btn.teal{background:var(--teal)}
+.fb{font-size:14.5px;margin-top:6px;font-weight:700}
+.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}
+.fb .right{color:var(--ink);background:var(--mark);padding:0 4px;border-radius:4px}
+
+/* scramble */
+.slots{min-height:44px;display:flex;flex-wrap:wrap;gap:5px;padding:6px;border:1.5px dashed var(--line);border-radius:10px;margin-bottom:8px}
+.tile{border:1.5px solid var(--line);background:#fff;border-radius:8px;min-width:36px;height:38px;font-weight:800;font-size:18px;text-transform:lowercase}
+.tile.used{visibility:hidden}
+.slots .tile{background:var(--accent-soft);border-color:#EFCDB8}
+
+/* reading */
+.text p{margin:0 0 12px}
+.text .lbl{display:inline-flex;width:26px;height:26px;border-radius:7px;background:var(--teal);color:#fff;font-weight:900;font-size:14px;align-items:center;justify-content:center;margin-right:6px}
+.w{background:var(--mark);border-radius:4px;padding:0 2px;cursor:pointer;border-bottom:2px solid #E8C35A}
+.tip{position:fixed;z-index:50;background:var(--ink);color:#fff;padding:7px 11px;border-radius:9px;font-size:15px;font-weight:700;max-width:260px;pointer-events:none;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.qs{margin:0 0 14px;padding-left:22px}
+.qs li{margin-bottom:4px}
+.task-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.task-row .lbl{flex:none}
+.task-row select{flex:1;font:inherit;font-size:16px;padding:8px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.task-row select.ok{border-color:var(--ok);background:var(--ok-soft)}
+.task-row select.bad{border-color:var(--bad);background:var(--bad-soft)}
+.stmt{margin-bottom:12px}
+.stmt p{margin:0 0 6px;font-weight:700}
+
+/* hard words + final */
+.hard{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.hard span{background:var(--bad-soft);color:var(--bad);border-radius:99px;padding:4px 10px;font-weight:700;font-size:14px}
+.big{font-size:44px;font-weight:900;font-family:var(--font-display);line-height:1;margin:6px 0}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
+.task-row .lbl{display:inline-flex;width:30px;height:30px;border-radius:8px;background:var(--teal);color:#fff;font-weight:900;align-items:center;justify-content:center}
+.task-row select{min-width:0;width:100%;text-overflow:ellipsis}
+.fc{height:88px}
+.bar .wrap{flex-direction:column;align-items:stretch;gap:8px}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:6px 14px;font-weight:800;font-size:15px}
+.tab.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.tab.done:not(.on){border-color:var(--ok);color:var(--ok)}
+.tab small{font-weight:900}
+.prog{display:flex;align-items:center;gap:12px}
+.hint{color:var(--muted);font-family:ui-monospace,Menlo,monospace;letter-spacing:2px;font-weight:600}
+.rule{font-size:13.5px;color:var(--teal);font-weight:700;margin-top:3px}
+.intro{margin:18px 0 0;padding:12px 14px;background:var(--teal-soft);border-radius:12px;color:var(--teal);font-weight:700;font-size:15px}
+.next{display:block;width:100%;margin-top:18px;padding:14px;font-size:17px}
+.mcol{display:flex;flex-direction:column;gap:8px}
+.ttl{margin:0 0 10px;text-align:center;font-size:20px}
+.tiles{gap:5px}
+.slots .tile{display:inline-flex;align-items:center;justify-content:center}
+.tab{padding:6px 11px;font-size:14px}
+.cover{display:block;width:100%;border-radius:14px;margin-top:14px}
+</style></head><body>
+<header class="hero wrap"><p class="eyebrow"><a href="../" style="color:inherit;text-decoration:none">← ОГЭ · Чтение</a></p><h1>Тексты с заголовками</h1><p class="sub">Задание 1 по чтению: подбери вопрос к каждому тексту. В каждом тексте 30 новых слов и задание ОГЭ.</p></header>
+<main class="wrap"><a class="ex" style="display:block;text-decoration:none;color:inherit" href="tourism.html"><p class="eyebrow">Текст 1</p><h2>Tourism — Туризм</h2><p class="note">30 новых слов</p></a><a class="ex" style="display:block;text-decoration:none;color:inherit" href="the-falkland-islands.html"><p class="eyebrow">Текст 2</p><h2>The Falkland Islands — Фолклендские острова</h2><p class="note">30 новых слов</p></a><a class="ex" style="display:block;text-decoration:none;color:inherit" href="mobile-phones.html"><p class="eyebrow">Текст 3</p><h2>Mobile Phones — Мобильные телефоны</h2><p class="note">30 новых слов</p></a><a class="ex" style="display:block;text-decoration:none;color:inherit" href="london.html"><p class="eyebrow">Текст 4</p><h2>London — Лондон</h2><p class="note">30 новых слов</p></a><a class="ex" style="display:block;text-decoration:none;color:inherit" href="the-channel-tunnel.html"><p class="eyebrow">Текст 5</p><h2>The Channel Tunnel — Тоннель под Ла-Маншем</h2><p class="note">30 новых слов</p></a></main><footer class="wrap">«Чемоданчик учителя английского»</footer></body></html>

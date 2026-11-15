@@ -1,0 +1,500 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>The Falkland Islands · ОГЭ · слова</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"><style>:root{
+  --paper:#FBF6EE;--card:#FFFFFF;--ink:#2B2420;--muted:#7A6E66;--line:#EADFD2;
+  --accent:#C8643B;--accent-soft:#F8E6DA;--teal:#2F6F6A;--teal-soft:#E1EFEC;
+  --ok:#2E8B57;--ok-soft:#E0F2E7;--bad:#C0392B;--bad-soft:#FBE3DF;--mark:#FFE7A8;
+  --r:14px;
+  --font-display:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+  --font-body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px}
+button{font:inherit;color:inherit;cursor:pointer}
+
+/* hero */
+.hero{padding-top:28px;padding-bottom:8px}
+.eyebrow{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 6px}
+h1{font-family:var(--font-display);font-weight:900;font-size:clamp(28px,7vw,40px);line-height:1.1;margin:0 0 8px}
+.sub{margin:0;color:var(--muted)}
+
+/* sticky progress */
+.bar{position:sticky;top:0;z-index:20;background:rgba(251,246,238,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:12px;padding-top:9px;padding-bottom:9px}
+.track{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#E39B5B);transition:width .4s}
+.count{font-size:14px;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+.count small{color:var(--muted);font-weight:600}
+
+main{padding:6px 0 80px}
+section.ex,a.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 16px;margin-top:18px;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.ex-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+h2{font-family:var(--font-display);font-weight:900;font-size:22px;line-height:1.2;margin:0}
+h2 .n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-size:15px;margin-right:8px;vertical-align:2px}
+.pill{flex:none;font-size:13px;font-weight:800;padding:3px 10px;border-radius:99px;background:var(--paper);border:1px solid var(--line);color:var(--muted);font-variant-numeric:tabular-nums}
+.pill.done{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.instr{color:var(--muted);margin:6px 0 14px;font-size:15px}
+
+/* flashcards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.fc{perspective:900px;height:112px;border:0;padding:0;background:none}
+.fc-in{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.fc.flip .fc-in{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc-f{background:var(--accent-soft);border:1px solid #EFCDB8}
+.fc-f b{font-size:17px;line-height:1.2}
+.fc-f small{color:var(--muted);font-size:12px;margin-top:4px}
+.fc-b{background:var(--teal-soft);border:1px solid #BFDCD7;transform:rotateY(180deg);font-size:15px;font-weight:700;color:var(--teal)}
+.say{border:0;background:none;font-size:18px;padding:2px 6px;line-height:1}
+.fc .say{position:absolute;top:4px;right:4px}
+
+/* items */
+.items{display:flex;flex-direction:column;gap:14px}
+.it{border-top:1px dashed var(--line);padding-top:12px}
+.it:first-child{border-top:0;padding-top:0}
+.q{margin:0 0 8px;font-weight:700}
+.q .k{color:var(--muted);font-weight:800;margin-right:6px;font-variant-numeric:tabular-nums}
+.q .gap{display:inline-block;min-width:70px;border-bottom:2px solid var(--accent);text-align:center;color:var(--accent)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:8px 13px;font-size:16px;font-weight:700;min-height:42px;text-align:left}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.opt.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad);text-decoration:line-through}
+.opt[disabled]{cursor:default}
+.locked .opt:not(.ok):not(.bad){opacity:.45}
+
+/* match */
+.mgroup{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.mgroup .opt{width:100%;font-size:15px}
+.mgroup .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.mgroup .opt.gone{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);opacity:.6}
+.mgroup .opt.shake{animation:sh .35s}
+@keyframes sh{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* typing */
+.row{display:flex;gap:8px}
+.inp{flex:1;min-width:0;font:inherit;font-size:17px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;outline:none}
+.inp:focus{border-color:var(--accent)}
+.inp.ok{border-color:var(--ok);background:var(--ok-soft);color:var(--ok);font-weight:700}
+.inp.bad{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
+.btn{border:0;background:var(--accent);color:#fff;border-radius:10px;padding:9px 16px;font-weight:800;font-size:16px}
+.btn.ghost{background:var(--paper);color:var(--ink);border:1.5px solid var(--line)}
+.btn.teal{background:var(--teal)}
+.fb{font-size:14.5px;margin-top:6px;font-weight:700}
+.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}
+.fb .right{color:var(--ink);background:var(--mark);padding:0 4px;border-radius:4px}
+
+/* scramble */
+.slots{min-height:44px;display:flex;flex-wrap:wrap;gap:5px;padding:6px;border:1.5px dashed var(--line);border-radius:10px;margin-bottom:8px}
+.tile{border:1.5px solid var(--line);background:#fff;border-radius:8px;min-width:36px;height:38px;font-weight:800;font-size:18px;text-transform:lowercase}
+.tile.used{visibility:hidden}
+.slots .tile{background:var(--accent-soft);border-color:#EFCDB8}
+
+/* reading */
+.text p{margin:0 0 12px}
+.text .lbl{display:inline-flex;width:26px;height:26px;border-radius:7px;background:var(--teal);color:#fff;font-weight:900;font-size:14px;align-items:center;justify-content:center;margin-right:6px}
+.w{background:var(--mark);border-radius:4px;padding:0 2px;cursor:pointer;border-bottom:2px solid #E8C35A}
+.tip{position:fixed;z-index:50;background:var(--ink);color:#fff;padding:7px 11px;border-radius:9px;font-size:15px;font-weight:700;max-width:260px;pointer-events:none;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.qs{margin:0 0 14px;padding-left:22px}
+.qs li{margin-bottom:4px}
+.task-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.task-row .lbl{flex:none}
+.task-row select{flex:1;font:inherit;font-size:16px;padding:8px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.task-row select.ok{border-color:var(--ok);background:var(--ok-soft)}
+.task-row select.bad{border-color:var(--bad);background:var(--bad-soft)}
+.stmt{margin-bottom:12px}
+.stmt p{margin:0 0 6px;font-weight:700}
+
+/* hard words + final */
+.hard{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.hard span{background:var(--bad-soft);color:var(--bad);border-radius:99px;padding:4px 10px;font-weight:700;font-size:14px}
+.big{font-size:44px;font-weight:900;font-family:var(--font-display);line-height:1;margin:6px 0}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
+.task-row .lbl{display:inline-flex;width:30px;height:30px;border-radius:8px;background:var(--teal);color:#fff;font-weight:900;align-items:center;justify-content:center}
+.task-row select{min-width:0;width:100%;text-overflow:ellipsis}
+.fc{height:88px}
+.bar .wrap{flex-direction:column;align-items:stretch;gap:8px}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:6px 14px;font-weight:800;font-size:15px}
+.tab.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.tab.done:not(.on){border-color:var(--ok);color:var(--ok)}
+.tab small{font-weight:900}
+.prog{display:flex;align-items:center;gap:12px}
+.hint{color:var(--muted);font-family:ui-monospace,Menlo,monospace;letter-spacing:2px;font-weight:600}
+.rule{font-size:13.5px;color:var(--teal);font-weight:700;margin-top:3px}
+.intro{margin:18px 0 0;padding:12px 14px;background:var(--teal-soft);border-radius:12px;color:var(--teal);font-weight:700;font-size:15px}
+.next{display:block;width:100%;margin-top:18px;padding:14px;font-size:17px}
+.mcol{display:flex;flex-direction:column;gap:8px}
+.ttl{margin:0 0 10px;text-align:center;font-size:20px}
+.tiles{gap:5px}
+.slots .tile{display:inline-flex;align-items:center;justify-content:center}
+.tab{padding:6px 11px;font-size:14px}
+.cover{display:block;width:100%;border-radius:14px;margin-top:14px}
+</style></head><body>
+<header class="hero wrap"><p class="eyebrow"><a href="./" style="color:inherit;text-decoration:none">← Тексты с заголовками</a> · Текст 2</p><h1>The Falkland Islands — Фолклендские острова</h1><p class="sub">30 новых слов из текста ОГЭ «The Falkland Islands».</p></header>
+<div class="bar"><div class="wrap"><nav class="tabs" id="tabs"></nav><div class="prog"><div class="track"><div class="fill" id="fill"></div></div><span class="count" id="cnt"></span></div></div></div>
+<main class="wrap" id="main"></main>
+<footer class="wrap"><a href="./" style="color:inherit">Все тексты</a> · Ответы сохраняются в этом браузере</footer>
+<script>
+const L = {
+  id: "h02", short: "Урок 2 · The Falkland Islands",
+  eyebrow: "ОГЭ · Чтение · Заголовки · Урок 2",
+  title: "The Falkland Islands — Фолклендские острова",
+  sub: "30 новых слов из текста ОГЭ «The Falkland Islands».",
+  words: [
+    { id: "coast", en: "coast", ru: "побережье, берег", pos: "n", gap: "About 250 miles off the ___ of South America lie the Falkland Islands.", ans: "coast" },
+    { id: "territory", en: "territory", ru: "территория", pos: "n", gap: "The Falkland Islands are a British overseas ___.", ans: "territory" },
+    { id: "isolated", en: "isolated", ru: "изолированный, оторванный от мира", pos: "adj", gap: "Like most ___ communities around the world, they are always pleased to welcome tourists.", ans: "isolated" },
+    { id: "community", en: "community", ru: "сообщество, община", pos: "n", hl: ["communities"], gap: "Like most isolated ___ around the world, they are always pleased to welcome tourists.", ans: "communities" },
+    { id: "welcome", en: "welcome", ru: "приветствовать, принимать (гостей)", pos: "v", gap: "They are always pleased to ___ tourists.", ans: "welcome" },
+    { id: "sheep", en: "sheep", ru: "овца, овцы", pos: "n", gap: "The people of the Falkland Islands mostly work in ___ farming and fishing.", ans: "sheep" },
+    { id: "numerous", en: "numerous", ru: "многочисленный", pos: "adj", gap: "Everything outside Stanley is home to ___ farms and settlements.", ans: "numerous" },
+    { id: "settlement", en: "settlement", ru: "посёлок, поселение", pos: "n", hl: ["settlements"], gap: "Everything outside Stanley is home to numerous farms and ___.", ans: "settlements" },
+    { id: "spread", en: "spread", ru: "распространяться; разбросанный", pos: "v", gap: "There are numerous farms and settlements ___ across the islands.", ans: "spread" },
+    { id: "population", en: "population", ru: "население", pos: "n", gap: "In fact, over three quarters of the ___ live in Stanley.", ans: "population" },
+    { id: "provide", en: "provide", ru: "обеспечивать, предоставлять", pos: "v", hl: ["provides"], gap: "Stanley ___ a variety of supermarkets, excellent restaurants and hotels.", ans: "provides" },
+    { id: "variety", en: "a variety of", ru: "разнообразные, множество разных", pos: "ph", gap: "Stanley provides ___ supermarkets, excellent restaurants and hotels.", ans: "a variety of" },
+    { id: "contain", en: "contain", ru: "содержать, вмещать", pos: "v", hl: ["contains"], gap: "The Falkland Islands Museum ___ artifacts from everyday life.", ans: "contains" },
+    { id: "shipwreck", en: "shipwreck", ru: "кораблекрушение", pos: "n", hl: ["shipwrecks"], gap: "The museum has a fine collection relating to the islands' ___.", ans: "shipwrecks" },
+    { id: "originally", en: "originally", ru: "изначально, сначала", pos: "adv", gap: "The Reclus Hut was ___ made in Stanley, then shipped to Antarctica.", ans: "originally" },
+    { id: "bringback", en: "bring back", ru: "привезти обратно, вернуть", pos: "v", hl: ["brought back"], gap: "Forty years later the famous house was ___.", ans: "brought back" },
+    { id: "rural", en: "rural", ru: "сельский, деревенский", pos: "adj", gap: "Other ___ pupils are taught by 'travelling' teachers.", ans: "rural" },
+    { id: "free", en: "free", ru: "бесплатный", pos: "adj", gap: "Schooling is ___ and compulsory for children between five and sixteen years of age.", ans: "free" },
+    { id: "compulsory", en: "compulsory", ru: "обязательный", pos: "adj", gap: "Schooling is free and ___ for children between five and sixteen years of age.", ans: "compulsory" },
+    { id: "attend", en: "attend", ru: "посещать (школу, занятия)", pos: "v", gap: "The government pays for older students to ___ colleges, usually in the UK.", ans: "attend" },
+    { id: "advantage", en: "take advantage of", ru: "воспользоваться (преимуществом)", pos: "ph", hl: ["taking advantage of"], gap: "The Falkland Islands government is ___ cheap wind power.", ans: "taking advantage of" },
+    { id: "invest", en: "invest", ru: "вкладывать (деньги), инвестировать", pos: "v", hl: ["investing"], gap: "Since 1996, the government has been ___ in the development of alternative sources of energy.", ans: "investing" },
+    { id: "development", en: "development", ru: "развитие", pos: "n", gap: "The government has been investing in the ___ of alternative sources of energy.", ans: "development" },
+    { id: "source", en: "source", ru: "источник", pos: "n", hl: ["sources"], gap: "The government has been investing in alternative ___ of energy.", ans: "sources" },
+    { id: "enjoy", en: "enjoy", ru: "наслаждаться, получать удовольствие", pos: "v", gap: "The government can already ___ the results.", ans: "enjoy" },
+    { id: "experiment", en: "experiment", ru: "экспериментировать; эксперимент", pos: "v", hl: ["experimented"], gap: "The Islands have ___ with other forms of energy, including solar power.", ans: "experimented" },
+    { id: "invasion", en: "invasion", ru: "вторжение, нападение", pos: "n", gap: "It started with the Argentine ___ and occupation of the Falkland Islands.", ans: "invasion" },
+    { id: "last", en: "last", ru: "длиться, продолжаться", pos: "v", hl: ["lasted"], gap: "The war ___ 74 days and ended with an Argentine defeat.", ans: "lasted" },
+    { id: "defeat", en: "defeat", ru: "поражение", pos: "n", gap: "The war lasted 74 days and ended with an Argentine ___.", ans: "defeat" },
+    { id: "giveup", en: "give up", ru: "отказаться от, бросить", pos: "v", hl: ["given up"], gap: "However, Argentina still has not fully ___ its claim to the territory of the islands.", ans: "given up" }
+  ],
+  forms: [
+    { id: "contain", s: "This box ___ old letters and photos.", o: ["contain", "contains", "containing"], a: "contains" },
+    { id: "provide", s: "Every day the school ___ free lunches for all pupils.", o: ["provide", "provides", "providing"], a: "provides" },
+    { id: "bringback", s: "Last week my parents ___ me a present back from Italy.", o: ["bring", "brought", "bringing"], a: "brought" },
+    { id: "giveup", s: "My dad has ___ up smoking!", o: ["give", "gave", "given"], a: "given", ru: "has + третья форма: give – gave – given" },
+    { id: "giveup", s: "Last year I ___ up sweets for a month.", o: ["give", "gave", "given"], a: "gave" },
+    { id: "last", s: "The film ___ two and a half hours yesterday.", o: ["last", "lasts", "lasted"], a: "lasted" },
+    { id: "attend", s: "Do you ___ any clubs after school?", o: ["attend", "attends", "attending"], a: "attend" },
+    { id: "population", s: "The ___ of our town is about 200,000 people.", o: ["populate", "population", "popular"], a: "population" },
+    { id: "invest", s: "Many countries are ___ money in green energy now.", o: ["invest", "investing", "invested"], a: "investing" },
+    { id: "development", s: "Our town is ___ very fast.", o: ["develop", "developing", "development"], a: "developing" },
+    { id: "development", s: "The ___ of new technologies is very important.", o: ["develop", "developed", "development"], a: "development" },
+    { id: "enjoy", s: "We ___ the concert very much last night.", o: ["enjoy", "enjoyed", "enjoying"], a: "enjoyed" },
+    { id: "enjoy", s: "I really enjoy ___ football with my friends.", o: ["play", "playing", "to play"], a: "playing", ru: "Запомни: enjoy + глагол с -ing" },
+    { id: "defeat", s: "Our team was ___ 0:3 yesterday.", o: ["defeat", "defeated", "defeating"], a: "defeated" },
+    { id: "spread", s: "News ___ very quickly on the Internet.", o: ["spread", "spreads", "spreading"], a: "spreads" },
+    { id: "advantage", s: "Let's take ___ of the good weather and go to the beach.", o: ["advantage", "advantages", "advantageous"], a: "advantage" },
+    { id: "free", s: "Is the museum ___? — Yes, you don't have to pay.", o: ["free", "freely", "freedom"], a: "free" },
+    { id: "experiment", s: "Scientists ___ with new materials every day.", o: ["experiment", "experiments", "experimented"], a: "experiment" }
+  ],
+  task: {
+    type: "headings", extra: 3,
+    questions: [
+      "What is the capital of the Falkland Islands?",
+      "Where can you learn about the islands’ history?",
+      "What is the emblem of the Falkland Islands?",
+      "What do the local people do for a living?",
+      "What energy resources are used on the islands?",
+      "What is the educational policy of the Falkland Islands?",
+      "What was the result of the conflict between Argentina and the UK?"
+    ],
+    key: { A: 4, B: 1, C: 2, D: 6, E: 5, F: 7 },
+    parts: [
+      { l: "A", t: "About 250 miles off the coast of South America lie the Falkland Islands, a British overseas territory. About 3,000 people live on the islands. Like most isolated communities around the world, they are always pleased to welcome tourists. The people of the Falkland Islands mostly work in sheep farming and fishing." },
+      { l: "B", t: "Everything outside Stanley, known locally as Camp, is home to numerous farms and settlements spread across the islands. In fact, over three quarters of the population live in Stanley. Although one of the smallest capitals in the world, Stanley provides a variety of supermarkets, excellent restaurants and hotels, a swimming pool, gym and golf course." },
+      { l: "C", t: "Open whenever tour ships are in the port, the Falkland Islands Museum contains artifacts from everyday life, natural history samples and a fine collection relating to the islands’ shipwrecks. Outdoor exhibition sites include the Reclus Hut, originally made in Stanley, then shipped to Antarctica and set up there in 1956. Forty years later the famous house was brought back." },
+      { l: "D", t: "There are only about 380 children of school age living on the islands. For them, there is a primary and a secondary school in Stanley and three small settlement schools on large farms. Other rural pupils are taught by ‘travelling’ teachers. Schooling is free and compulsory for children between five and sixteen years of age. The government pays for older students to attend colleges, usually in the UK." },
+      { l: "E", t: "The Falkland Islands government is taking advantage of cheap wind power. Since 1996, the government has been investing in the development of alternative sources of energy and can already enjoy the results. The Islands have experimented with other forms of energy, including hydro-electric and solar power. However, these forms cannot match the effectiveness of wind power yet." },
+      { l: "F", t: "The Falklands War was fought in 1982 between Argentina and the United Kingdom. It started with the Argentine invasion and occupation of the Falkland Islands and South Georgia. The war lasted 74 days and ended with an Argentine defeat. However, Argentina still has not fully given up its claim to the territory of the islands." }
+    ]
+  }
+};
+
+L.eyebrow = "ОГЭ · Тексты с заголовками · Текст 2"; L.short = "Тексты с заголовками · Текст 2 · The Falkland Islands";
+/* ===== David · OGE vocabulary engine. Expects const L = {...} defined before. ===== */
+(function () {
+const W = L.words, byId = Object.fromEntries(W.map(w => [w.id, w]));
+const $ = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
+const norm = s => (s || "").toLowerCase().replace(/[’‘`]/g, "'").replace(/[.!?,;:]+/g, " ").replace(/\s+/g, " ").trim();
+
+/* seeded random, so the page looks the same after reload */
+let seed = [...L.id].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
+const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+const shuffle = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pick = (pool, n, not) => shuffle(pool.filter(x => !not.includes(x))).slice(0, n);
+
+/* saved state */
+const KEY = "oge-reading-" + L.id;
+let S = {}; try { S = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { S = {}; }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+function mark(key, wid, ok, v) { if (S[key]) return; S[key] = { w: wid, ok: ok, v: v }; save(); upd(); }
+
+/* speech */
+let voice = null;
+function pickVoice() { const vs = speechSynthesis.getVoices(); voice = vs.find(v => /en[-_]GB/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || null; }
+if ("speechSynthesis" in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function say(text) { if (!("speechSynthesis" in window)) return; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = "en-GB"; if (voice) u.voice = voice; u.rate = .85; speechSynthesis.speak(u); }
+const sayBtn = text => { const b = $("button", "say", "🔊"); b.type = "button"; b.setAttribute("aria-label", "Послушать"); b.onclick = e => { e.stopPropagation(); say(text); }; return b; };
+
+/* ===== layout: tabs ===== */
+const main = document.getElementById("main");
+const tabsNav = document.getElementById("tabs");
+const TABS = [];
+let CUR = null, secN = 0;
+function newTab(label, title) {
+  const btn = $("button", "tab", label); btn.type = "button"; const cnt = $("small"); btn.append(cnt); tabsNav.append(btn);
+  const pane = $("div", "pane"); pane.hidden = true; main.append(pane);
+  const t = { btn, cnt, pane, keys: [], sections: [], title }; TABS.push(t);
+  btn.onclick = () => showTab(TABS.indexOf(t), true); CUR = t; secN = 0; return t;
+}
+function showTab(i, scroll) {
+  TABS.forEach((t, j) => { t.pane.hidden = j !== i; t.btn.classList.toggle("on", j === i); });
+  try { localStorage.setItem(KEY + "-tab", i); } catch (e) {}
+  if (scroll) window.scrollTo({ top: document.querySelector(".bar").offsetTop, behavior: "smooth" });
+  upd();
+}
+function section(title, instr) {
+  const s = $("section", "ex"); const h = $("div", "ex-head"); const h2 = $("h2");
+  h2.append($("span", "n", ++secN), title); const pill = $("span", "pill"); h.append(h2, pill); s.append(h);
+  if (instr) s.append($("p", "instr", instr));
+  CUR.pane.append(s); const rec = { s, pill, keys: [], tab: CUR, id: "t" + TABS.length + "s" + secN }; CUR.sections.push(rec); return rec;
+}
+function regKey(rec, i) { const key = rec.id + "-" + i; rec.keys.push(key); rec.tab.keys.push(key); return key; }
+
+/* MCQ item */
+function fillGap(q, ans) { const g = q.querySelector(".gap"); if (g) g.textContent = ans; }
+function qLine(k, html) { const p = $("p", "q"); p.append($("span", "k", k + ".")); const t = $("span"); t.innerHTML = html; p.append(t); return p; }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const gapHtml = s => esc(s).replace("___", '<span class="gap">&nbsp;</span>');
+function mcq(rec, i, wid, qNode, options, answer) {
+  const key = regKey(rec, i);
+  const it = $("div", "it"); it.append(qNode); const box = $("div", "opts"); it.append(box);
+  const btns = options.map(o => { const b = $("button", "opt", o); b.type = "button"; box.append(b); return b; });
+  const lock = chosen => { box.classList.add("locked"); btns.forEach(b => { b.disabled = true; if (b.textContent === answer) b.classList.add("ok"); else if (b.textContent === chosen) b.classList.add("bad"); }); fillGap(qNode, answer); };
+  btns.forEach(b => b.onclick = () => { const ok = b.textContent === answer; mark(key, wid, ok, b.textContent); lock(b.textContent); if (rec.speak) say(answer); });
+  if (S[key]) lock(S[key].v);
+  return it;
+}
+/* typing item */
+const hint = en => en.split(" ").map(p => p[0] + "_".repeat(Math.max(0, p.length - 1))).join("  ");
+const hintHtml = w => esc(w.ru) + ' &nbsp;<span class="hint">' + esc(hint(w.en)) + "</span>";
+function typing(rec, i, wid, qNode, answers, opts = {}) {
+  const key = regKey(rec, i);
+  const it = $("div", "it"); it.append(qNode);
+  const row = $("div", "row"); const inp = $("input", "inp"); inp.type = "text"; inp.autocomplete = "off"; inp.autocapitalize = "off"; inp.spellcheck = false; inp.setAttribute("autocorrect", "off");
+  if (opts.ph) inp.placeholder = opts.ph;
+  const b = $("button", "btn", "OK"); b.type = "button"; row.append(inp, b); it.append(row);
+  const fb = $("div", "fb"); it.append(fb);
+  const lock = (v, ok) => { inp.value = v; inp.disabled = true; b.style.display = "none"; inp.classList.add(ok ? "ok" : "bad");
+    fb.className = "fb " + (ok ? "ok" : "bad"); fb.innerHTML = ok ? "Верно! " : 'Правильно: <span class="right">' + esc(answers[0]) + "</span> "; fb.append(sayBtn(answers[0])); };
+  const check = () => { const v = inp.value.trim(); if (!v) return; const ok = answers.some(a => norm(a) === norm(v)); mark(key, wid, ok, v); lock(v, ok); say(answers[0]); };
+  b.onclick = check; inp.onkeydown = e => { if (e.key === "Enter") check(); };
+  if (S[key]) lock(S[key].v, S[key].ok);
+  return it;
+}
+const answersOf = w => [w.en, ...(w.alt || [])];
+
+/* ===== exercise builders ===== */
+function exCards(ws) {
+  const r = section("Новые слова", "Нажми на карточку — увидишь перевод. 🔊 — послушай. Проговори каждое слово вслух.");
+  const g = $("div", "cards");
+  ws.forEach(w => { const c = $("button", "fc"); c.type = "button"; const inn = $("div", "fc-in"); const f = $("div", "fc-f"); f.append($("b", null, w.en));
+    inn.append(f, $("div", "fc-b", w.ru)); c.append(inn, sayBtn(w.en)); c.onclick = () => { c.classList.toggle("flip"); if (c.classList.contains("flip")) say(w.en); }; g.append(c); });
+  r.s.append(g); r.pill.textContent = ws.length + " слов"; r.static = true;
+}
+function exMatch(ws) {
+  const r = section("Соедини пары", "Нажми на английское слово, потом на его перевод.");
+  const sh = shuffle(ws); const groups = []; for (let i = 0; i < sh.length; i += 5) groups.push(sh.slice(i, i + 5));
+  if (groups.length > 1 && groups[groups.length - 1].length < 3) groups[groups.length - 2].push(...groups.pop());
+  let idx = 0;
+  groups.forEach(gr => {
+    const box = $("div", "mgroup"); const c1 = $("div", "mcol"), c2 = $("div", "mcol"); box.append(c1, c2);
+    let sel = null; const miss = {}; const lb = {}, rb = {};
+    const items = gr.map(w => ({ w, key: regKey(r, idx++) }));
+    items.forEach(it => { const b = $("button", "opt", it.w.en); b.type = "button"; lb[it.w.id] = b; b.onclick = () => { if (b.classList.contains("gone")) return; Object.values(lb).forEach(x => x.classList.remove("sel")); b.classList.add("sel"); sel = it; say(it.w.en); }; c1.append(b); });
+    shuffle(items).forEach(({ w }) => { const b = $("button", "opt", w.ru); b.type = "button"; rb[w.id] = b; c2.append(b);
+      b.onclick = () => { if (!sel || b.classList.contains("gone")) return;
+        if (sel.w.id === w.id) { lb[w.id].classList.remove("sel"); lb[w.id].classList.add("gone"); b.classList.add("gone"); mark(sel.key, w.id, !miss[w.id], w.ru); sel = null; }
+        else { miss[sel.w.id] = true; b.classList.add("shake"); setTimeout(() => b.classList.remove("shake"), 400); } }; });
+    items.forEach(({ w, key }) => { if (S[key]) { lb[w.id].classList.add("gone"); rb[w.id].classList.add("gone"); } });
+    r.s.append(box);
+  });
+}
+function exEnRu(ws) {
+  const r = section("Выбери перевод", "Что значит это слово?");
+  const box = $("div", "items"); const pool = W.map(w => w.ru);
+  shuffle(ws).forEach((w, i) => { const q = qLine(i + 1, "<b>" + esc(w.en) + "</b>"); q.append(sayBtn(w.en)); box.append(mcq(r, i, w.id, q, shuffle([w.ru, ...pick(ws.map(x => x.ru).concat(pool).filter((x, j, a) => a.indexOf(x) === j), 3, [w.ru])]), w.ru)); });
+  r.s.append(box);
+}
+function exRuEn(ws) {
+  const r = section("Как это по-английски?", "Выбери английское слово.");
+  r.speak = true; const box = $("div", "items"); const pool = ws.map(x => x.en);
+  shuffle(ws).forEach((w, i) => box.append(mcq(r, i, w.id, qLine(i + 1, esc(w.ru)), shuffle([w.en, ...pick(pool, 3, [w.en])]), w.en)));
+  r.s.append(box);
+}
+function exGap(ws) {
+  const r = section("Вставь слово", "Это предложения из текста ОГЭ. Выбери слово, которое подходит.");
+  r.speak = true; const box = $("div", "items");
+  shuffle(ws.filter(w => w.gap)).forEach((w, i) => {
+    const same = ws.filter(x => x.pos === w.pos && x.id !== w.id).map(x => x.ans);
+    const pool = same.length >= 3 ? same : ws.filter(x => x.id !== w.id).map(x => x.ans);
+    box.append(mcq(r, i, w.id, qLine(i + 1, gapHtml(w.gap)), shuffle([w.ans, ...pick(pool, 3, [w.ans])]), w.ans));
+  });
+  r.s.append(box);
+}
+function exForms(fs) {
+  if (!fs.length) return;
+  const r = section("Выбери правильную форму", "Какое время? Какое слово нужно — глагол, существительное или прилагательное?");
+  r.speak = true; const box = $("div", "items");
+  fs.forEach((f, i) => { const q = qLine(i + 1, gapHtml(f.s)); if (f.ru) q.append($("div", "rule", f.ru)); box.append(mcq(r, i, f.id, q, shuffle(f.o), f.a)); });
+  r.s.append(box);
+}
+function exScramble(ws) {
+  const list = shuffle(ws.filter(w => /^[a-z]+$/i.test(w.en) && w.en.length >= 4));
+  if (!list.length) return;
+  const r = section("Собери слово", "Нажимай на буквы по порядку. Ошибся — нажми на букву в ответе, она вернётся назад.");
+  const box = $("div", "items");
+  list.forEach((w, i) => {
+    const key = regKey(r, i);
+    const it = $("div", "it"); it.append(qLine(i + 1, esc(w.ru)));
+    const slots = $("div", "slots"); const pool = $("div", "opts tiles"); it.append(slots, pool); const fb = $("div", "fb"); it.append(fb);
+    let letters = shuffle([...w.en.toLowerCase()]); if (letters.join("") === w.en.toLowerCase()) letters = letters.reverse();
+    let wrong = false; const chosen = [];
+    const done = ok => { slots.innerHTML = ""; [...w.en].forEach(ch => slots.append($("span", "tile", ch))); pool.remove(); fb.className = "fb " + (ok ? "ok" : "bad"); fb.textContent = ok ? "Верно! " : "Получилось не с первого раза "; fb.append(sayBtn(w.en)); slots.style.borderColor = ok ? "var(--ok)" : "var(--bad)"; };
+    letters.forEach(ch => { const t = $("button", "tile", ch); t.type = "button"; pool.append(t);
+      t.onclick = () => { if (t.classList.contains("used")) return; t.classList.add("used"); const s = $("button", "tile", ch); s.type = "button"; slots.append(s); chosen.push({ t, s });
+        s.onclick = () => { t.classList.remove("used"); s.remove(); chosen.splice(chosen.findIndex(c => c.s === s), 1); };
+        if (chosen.length === letters.length) { const v = chosen.map(c => c.s.textContent).join("");
+          if (v === w.en.toLowerCase()) { mark(key, w.id, !wrong, v); done(!wrong); say(w.en); }
+          else { wrong = true; fb.className = "fb bad"; fb.textContent = "Не так. Нажми на буквы в ответе и попробуй ещё раз."; } } }; });
+    if (S[key]) done(S[key].ok);
+    box.append(it);
+  });
+  r.s.append(box);
+}
+function exType(ws, title) {
+  const r = section(title || "Напиши по-английски", "Подсказка: первая буква и сколько всего букв. Нажми OK или Enter.");
+  const box = $("div", "items");
+  shuffle(ws).forEach((w, i) => box.append(typing(r, i, w.id, qLine(i + 1, hintHtml(w)), answersOf(w))));
+  r.s.append(box);
+}
+function exListen(ws) {
+  const r = section("Послушай и напиши", "Нажми 🔊, послушай слово (можно несколько раз) и напиши его.");
+  const box = $("div", "items");
+  shuffle(ws).forEach((w, i) => { const q = $("p", "q"); q.append($("span", "k", (i + 1) + ".")); const b = $("button", "btn ghost", "🔊 Слушать"); b.type = "button"; b.onclick = () => say(w.en); q.append(b); box.append(typing(r, i, w.id, q, answersOf(w), { ph: "напиши, что услышал" })); });
+  r.s.append(box);
+}
+function exRetry(getWords, title, instr) {
+  const r = section(title, instr); r.static = true; r.pill.textContent = "🔁";
+  const box = $("div"); r.s.append(box); r.render = () => {
+    box.innerHTML = ""; const hw = getWords();
+    if (!hw.length) { box.append($("p", "note", "Ошибок нет. Так держать! 💪")); return; }
+    const chips = $("div", "hard"); hw.forEach(w => chips.append($("span", null, w.en + " — " + w.ru))); box.append(chips);
+    const b = $("button", "btn", "Повторить эти слова"); b.type = "button"; box.append(b);
+    b.onclick = () => { b.remove(); const list = $("div", "items"); list.style.marginTop = "12px";
+      shuffle(hw).forEach((w, i) => { const it = $("div", "it"); it.append(qLine(i + 1, hintHtml(w)));
+        const row = $("div", "row"); const inp = $("input", "inp"); inp.autocapitalize = "off"; inp.autocomplete = "off"; inp.spellcheck = false; const ok = $("button", "btn", "OK"); ok.type = "button"; row.append(inp, ok); const fb = $("div", "fb"); it.append(row, fb);
+        const chk = () => { const good = answersOf(w).some(a => norm(a) === norm(inp.value)); say(w.en); if (good) { inp.className = "inp ok"; inp.disabled = true; ok.remove(); fb.className = "fb ok"; fb.textContent = "Верно!"; } else { inp.className = "inp bad"; fb.className = "fb bad"; fb.innerHTML = 'Правильно: <span class="right">' + esc(w.en) + "</span> — напиши ещё раз"; inp.value = ""; inp.focus(); } };
+        ok.onclick = chk; inp.onkeydown = e => { if (e.key === "Enter") chk(); }; list.append(it); });
+      box.append(list); r.frozen = true; };
+  };
+  return r;
+}
+const RETRY = [];
+function hardWords(keys) { const h = {}; keys.forEach(k => { const x = S[k]; if (x && x.w && !x.ok) h[x.w] = 1; }); return Object.keys(h).filter(id => byId[id]).map(id => byId[id]); }
+function nextBtn(i, label) { const b = $("button", "btn next", label); b.type = "button"; b.onclick = () => showTab(i, true); CUR.pane.append(b); }
+
+/* ===== text highlighting ===== */
+const forms = []; W.forEach(w => { [w.en, w.ans, ...(w.hl || [])].filter(Boolean).forEach(f => forms.push([f.toLowerCase().replace(/’/g, "'"), w])); });
+forms.sort((a, b) => b[0].length - a[0].length);
+const re = new RegExp("\\b(" + forms.map(f => f[0].replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/'/g, "['’]")).join("|") + ")\\b", "gi");
+const fmap = Object.fromEntries(forms.map(f => [f[0], f[1]]));
+function hl(text) { return esc(text).replace(re, m => { const w = fmap[m.toLowerCase().replace(/’/g, "'")]; return w ? '<span class="w" data-ru="' + esc(w.ru) + '" data-en="' + esc(w.en) + '">' + m + "</span>" : m; }); }
+const tip = $("div", "tip"); tip.style.display = "none"; document.body.append(tip);
+document.addEventListener("click", e => { const t = e.target.closest(".w"); if (!t) { tip.style.display = "none"; return; } say(t.dataset.en); tip.textContent = t.dataset.ru; tip.style.display = "block"; const rc = t.getBoundingClientRect(); tip.style.left = Math.max(8, Math.min(innerWidth - 270, rc.left)) + "px"; tip.style.top = (rc.bottom + 6) + "px"; });
+addEventListener("scroll", () => tip.style.display = "none", { passive: true });
+
+/* ===== build tabs ===== */
+const N = 3, size = Math.ceil(W.length / N);
+const parts = []; for (let i = 0; i < N; i++) parts.push(W.slice(i * size, (i + 1) * size));
+parts.forEach((ws, i) => {
+  const t = newTab("Часть " + (i + 1), ws);
+  const ids = new Set(ws.map(w => w.id));
+  exCards(ws); exMatch(ws); exEnRu(ws); exRuEn(ws); exGap(ws);
+  exForms((L.forms || []).filter(f => ids.has(f.id)));
+  exScramble(ws); exType(ws); exListen(ws);
+  RETRY.push({ r: exRetry(() => hardWords(t.keys), "Работа над ошибками", "Слова этой части, в которых ты ошибся. Напиши их ещё раз."), t });
+  nextBtn(i + 1, i < N - 1 ? "Дальше → Часть " + (i + 2) : "Дальше → Всё вместе");
+});
+{
+  const t = newTab("Всё вместе", W);
+  t.pane.append($("p", "intro", "Все 30 слов вперемешку. Сделай эту вкладку, когда пройдёшь три части — лучше на следующий день."));
+  exMatch(W); exGap(W); exType(W, "Напиши по-английски — все слова");
+  const r = section("Прочитай текст", "Это настоящий текст из ОГЭ. Новые слова выделены — нажми на слово, если забыл перевод.");
+  r.static = true; r.pill.textContent = "📖";
+  const tx = $("div", "text");
+  if (L.task.title) tx.append($("h3", "ttl", L.task.title));
+  if (L.task.parts) L.task.parts.forEach(p => { const el = $("p"); el.innerHTML = '<span class="lbl">' + p.l + "</span>" + hl(p.t); tx.append(el); });
+  else L.task.paras.forEach(p => { const el = $("p"); el.innerHTML = hl(p); tx.append(el); });
+  r.s.append(tx);
+  const T = L.task;
+  if (T.type === "headings") {
+    const r2 = section("Задание ОГЭ", "Определи, в каком тексте A–F есть ответ на каждый вопрос 1–7. Один вопрос лишний. Можно листать вверх и перечитывать текст.");
+    const ol = $("ol", "qs"); T.questions.forEach(q => ol.append($("li", null, q))); r2.s.append(ol);
+    const sels = {};
+    T.parts.forEach((p, i) => { const key = regKey(r2, i); const row = $("div", "task-row"); row.append($("span", "lbl", p.l));
+      const s = $("select"); s.append(new Option("— номер вопроса —", "")); T.questions.forEach((q, j) => s.append(new Option(String(j + 1), j + 1))); row.append(s); r2.s.append(row); sels[p.l] = { s, key }; });
+    const b = $("button", "btn teal", "Проверить"); b.type = "button"; const fb = $("div", "fb"); r2.s.append(b, fb);
+    const show = () => { let n = 0; T.parts.forEach(p => { const { s, key } = sels[p.l]; s.value = S[key].v; const ok = +S[key].v === T.key[p.l]; if (ok) n++; s.className = ok ? "ok" : "bad"; s.disabled = true; }); b.style.display = "none"; fb.className = "fb " + (n === T.parts.length ? "ok" : "bad"); fb.innerHTML = "Правильно " + n + " из " + T.parts.length + ". " + (n < T.parts.length ? "Ответы: " + T.parts.map(p => p.l + "–" + T.key[p.l]).join(", ") + ". Лишний вопрос — " + T.extra + "." : "Отлично!"); };
+    b.onclick = () => { if (T.parts.some(p => !sels[p.l].s.value)) { fb.className = "fb bad"; fb.textContent = "Выбери номер вопроса для каждого текста."; return; } T.parts.forEach(p => { const { s, key } = sels[p.l]; mark(key, null, +s.value === T.key[p.l], s.value); }); show(); };
+    if (T.parts.every(p => S[sels[p.l].key])) show();
+  } else {
+    const r2 = section("Задание ОГЭ", "True — так сказано в тексте. False — в тексте сказано обратное. Not stated — в тексте об этом ничего нет.");
+    const box = $("div", "items"); const lab = ["True", "False", "Not stated"];
+    T.st.forEach((st, i) => box.append(mcq(r2, i, null, qLine(i + 1, esc(st.s)), lab, lab[st.a - 1])));
+    r2.s.append(box);
+  }
+  RETRY.push({ r: exRetry(() => hardWords(Object.keys(S)), "Все трудные слова урока", "Все слова, в которых были ошибки, во всех частях. Повтори их ещё раз."), t });
+  const fin = section("Мой результат", null); fin.static = true; fin.pill.textContent = "🏁";
+  const finBox = $("div"); fin.s.append(finBox);
+  window.__renderFin = () => {
+    const all = TABS.flatMap(t => t.keys); const done = all.filter(k => S[k]).length, ok = all.filter(k => S[k] && S[k].ok).length; const pct = done ? Math.round(ok / done * 100) : 0;
+    finBox.innerHTML = ""; finBox.append($("div", "big", done + " / " + all.length));
+    const lines = TABS.map(t => t.btn.firstChild.textContent + ": " + t.keys.filter(k => S[k]).length + "/" + t.keys.length);
+    finBox.append($("p", "note", "Выполнено " + done + " заданий из " + all.length + (done ? ", с первого раза верно " + pct + "%" : "") + ". " + lines.join(" · ")));
+    const a = $("div", "actions");
+    const send = $("button", "btn teal", "Отправить результат учителю"); send.type = "button";
+    send.onclick = async () => { let nm = ""; try { nm = localStorage.getItem("oge-reading-name") || ""; } catch (e) {} if (!nm) { nm = (prompt("Как тебя зовут? (имя увидит учитель)") || "").trim(); if (!nm) return; try { localStorage.setItem("oge-reading-name", nm); } catch (e) {} } const hw = hardWords(Object.keys(S)); const txt = nm + " · " + L.short + "\n" + lines.join("\n") + "\nВсего: " + done + "/" + all.length + ", верно с первого раза " + pct + "%\n" + (hw.length ? "Трудные слова: " + hw.map(w => w.en).join(", ") : "Ошибок нет!");
+      try { if (navigator.share) { await navigator.share({ text: txt }); return; } } catch (e) { if (e && e.name === "AbortError") return; }
+      try { await navigator.clipboard.writeText(txt); send.textContent = "Скопировано — вставь в сообщение ✓"; } catch (e) { prompt("Скопируй и отправь:", txt); } };
+    const reset = $("button", "btn ghost", "Начать урок заново"); reset.type = "button";
+    reset.onclick = () => { if (confirm("Стереть все ответы во всех частях и начать заново?")) { S = {}; save(); location.reload(); } };
+    a.append(send, reset); finBox.append(a);
+  };
+}
+
+/* ===== progress ===== */
+function upd() {
+  const t = TABS.find(t => !t.pane.hidden) || TABS[0];
+  const d = t.keys.filter(k => S[k]).length;
+  document.getElementById("cnt").innerHTML = d + " <small>/ " + t.keys.length + "</small>";
+  document.getElementById("fill").style.width = (t.keys.length ? d / t.keys.length * 100 : 0) + "%";
+  TABS.forEach(x => { const n = x.keys.filter(k => S[k]).length; x.cnt.textContent = n === x.keys.length ? " ✓" : ""; x.btn.classList.toggle("done", n === x.keys.length); });
+  TABS.forEach(x => x.sections.forEach(r => { if (r.static) return; const n = r.keys.filter(k => S[k]).length; r.pill.textContent = n + " / " + r.keys.length; r.pill.classList.toggle("done", n === r.keys.length); }));
+  RETRY.forEach(x => { if (!x.r.frozen) x.r.render(); });
+  window.__renderFin && window.__renderFin();
+}
+let start = 0; try { start = +(localStorage.getItem(KEY + "-tab") || 0); } catch (e) {}
+showTab(Math.min(start, TABS.length - 1), false);
+})();
+
+</script></body></html>
