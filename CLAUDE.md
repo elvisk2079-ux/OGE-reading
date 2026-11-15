@@ -17,7 +17,7 @@ Owner: Elena, an English teacher (Russian-speaking). Students are 9th-graders at
 ## Lesson file format
 Copy the shape of an existing file exactly (see `src/lessons/headings/h06.js` and `src/lessons/tfns/t01.js`):
 - `id` (“h11”, “t06”…), `title` (“English Title — Русское название”), `sub` (“30 новых слов из текста ОГЭ «English Title».”).
-- headings texts have no title in the book: invent a short English topic title from the texts (e.g. “Thanksgiving Day”).
+- Titles are fixed in `src/source/titles.md` (Elena has pictures made for them) — use exactly that title for each number.
 - `words`: **exactly 30** words/phrases, in the order they appear in the text (the engine splits them into three parts of 10).
   - `id` (unique, short latin), `en` (dictionary form), `ru` (short Russian translation, 1–2 variants), `pos` (`v`, `n`, `adj`, `adv`, `prep`, `ph`),
   - `gap`: a sentence taken from the text with the word replaced by `___`; `ans`: the exact form that fills the gap (as it appears in the text, capitalised if sentence-initial),
@@ -34,4 +34,8 @@ Copy the shape of an existing file exactly (see `src/lessons/headings/h06.js` an
 2. Make the next **5** lessons (if fewer remain, make what is left). If all 51 exist, do nothing and report that the series is complete.
 3. `node src/check.js` (fix until all ✓), then `python3 src/build.py`.
 4. Commit (“Add lessons hNN–hNN”) and push to `main`.
-5. Report in Russian: the titles added, their links (`https://elvisk2079-ux.github.io/OGE-reading/headings/<slug>.html`), the answer keys you used (so Elena can check them), and how many lessons remain.
+5. Google Drive backup (Google Drive connector): upload each new lesson's built HTML as a file named like `11 Christmas Traditions.html` (two-digit number + English title, mimeType text/html, no conversion; upload via a `sha256:<hash>:<path>` file reference, never by pasting the HTML):
+   - headings → folder «ОГЭ / Reading / Reading Task 1», id `1GHhDTF24oM5jdcmoYezRMj_GmamFrRaU`
+   - tfns → folder «ОГЭ / Reading / True False Not Stated», id `1fi5rsqCmNhjin8xOy_wJfiaFsCsu42Qc`
+   Then add the new lines (`NN Title — <link>`) to the Google Doc «Ссылки на уроки — Reading», id `1Le_BZ1YAv-SE9-ZLXdCdzxhTY2WAjCZ9y4YY3Gr7ZsU`, in the right section, keeping all existing lines.
+6. Report in Russian: the titles added, their links (`https://elvisk2079-ux.github.io/OGE-reading/headings/<slug>.html`), the answer keys you used (so Elena can check them), and how many lessons remain.
