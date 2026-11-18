@@ -1,0 +1,495 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>David Beckham · ОГЭ · слова</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"><style>:root{
+  --paper:#FBF6EE;--card:#FFFFFF;--ink:#2B2420;--muted:#7A6E66;--line:#EADFD2;
+  --accent:#C8643B;--accent-soft:#F8E6DA;--teal:#2F6F6A;--teal-soft:#E1EFEC;
+  --ok:#2E8B57;--ok-soft:#E0F2E7;--bad:#C0392B;--bad-soft:#FBE3DF;--mark:#FFE7A8;
+  --r:14px;
+  --font-display:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+  --font-body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px}
+button{font:inherit;color:inherit;cursor:pointer}
+
+/* hero */
+.hero{padding-top:28px;padding-bottom:8px}
+.eyebrow{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:800;margin:0 0 6px}
+h1{font-family:var(--font-display);font-weight:900;font-size:clamp(28px,7vw,40px);line-height:1.1;margin:0 0 8px}
+.sub{margin:0;color:var(--muted)}
+
+/* sticky progress */
+.bar{position:sticky;top:0;z-index:20;background:rgba(251,246,238,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:12px;padding-top:9px;padding-bottom:9px}
+.track{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#E39B5B);transition:width .4s}
+.count{font-size:14px;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+.count small{color:var(--muted);font-weight:600}
+
+main{padding:6px 0 80px}
+section.ex,a.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 16px;margin-top:18px;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.ex-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+h2{font-family:var(--font-display);font-weight:900;font-size:22px;line-height:1.2;margin:0}
+h2 .n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-size:15px;margin-right:8px;vertical-align:2px}
+.pill{flex:none;font-size:13px;font-weight:800;padding:3px 10px;border-radius:99px;background:var(--paper);border:1px solid var(--line);color:var(--muted);font-variant-numeric:tabular-nums}
+.pill.done{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.instr{color:var(--muted);margin:6px 0 14px;font-size:15px}
+
+/* flashcards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.fc{perspective:900px;height:112px;border:0;padding:0;background:none}
+.fc-in{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.fc.flip .fc-in{transform:rotateY(180deg)}
+.fc-f,.fc-b{position:absolute;inset:0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fc-f{background:var(--accent-soft);border:1px solid #EFCDB8}
+.fc-f b{font-size:17px;line-height:1.2}
+.fc-f small{color:var(--muted);font-size:12px;margin-top:4px}
+.fc-b{background:var(--teal-soft);border:1px solid #BFDCD7;transform:rotateY(180deg);font-size:15px;font-weight:700;color:var(--teal)}
+.say{border:0;background:none;font-size:18px;padding:2px 6px;line-height:1}
+.fc .say{position:absolute;top:4px;right:4px}
+
+/* items */
+.items{display:flex;flex-direction:column;gap:14px}
+.it{border-top:1px dashed var(--line);padding-top:12px}
+.it:first-child{border-top:0;padding-top:0}
+.q{margin:0 0 8px;font-weight:700}
+.q .k{color:var(--muted);font-weight:800;margin-right:6px;font-variant-numeric:tabular-nums}
+.q .gap{display:inline-block;min-width:70px;border-bottom:2px solid var(--accent);text-align:center;color:var(--accent)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:8px 13px;font-size:16px;font-weight:700;min-height:42px;text-align:left}
+.opt:active{transform:scale(.98)}
+.opt.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.opt.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad);text-decoration:line-through}
+.opt[disabled]{cursor:default}
+.locked .opt:not(.ok):not(.bad){opacity:.45}
+
+/* match */
+.mgroup{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.mgroup .opt{width:100%;font-size:15px}
+.mgroup .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.mgroup .opt.gone{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);opacity:.6}
+.mgroup .opt.shake{animation:sh .35s}
+@keyframes sh{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* typing */
+.row{display:flex;gap:8px}
+.inp{flex:1;min-width:0;font:inherit;font-size:17px;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;outline:none}
+.inp:focus{border-color:var(--accent)}
+.inp.ok{border-color:var(--ok);background:var(--ok-soft);color:var(--ok);font-weight:700}
+.inp.bad{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
+.btn{border:0;background:var(--accent);color:#fff;border-radius:10px;padding:9px 16px;font-weight:800;font-size:16px}
+.btn.ghost{background:var(--paper);color:var(--ink);border:1.5px solid var(--line)}
+.btn.teal{background:var(--teal)}
+.fb{font-size:14.5px;margin-top:6px;font-weight:700}
+.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}
+.fb .right{color:var(--ink);background:var(--mark);padding:0 4px;border-radius:4px}
+
+/* scramble */
+.slots{min-height:44px;display:flex;flex-wrap:wrap;gap:5px;padding:6px;border:1.5px dashed var(--line);border-radius:10px;margin-bottom:8px}
+.tile{border:1.5px solid var(--line);background:#fff;border-radius:8px;min-width:36px;height:38px;font-weight:800;font-size:18px;text-transform:lowercase}
+.tile.used{visibility:hidden}
+.slots .tile{background:var(--accent-soft);border-color:#EFCDB8}
+
+/* reading */
+.text p{margin:0 0 12px}
+.text .lbl{display:inline-flex;width:26px;height:26px;border-radius:7px;background:var(--teal);color:#fff;font-weight:900;font-size:14px;align-items:center;justify-content:center;margin-right:6px}
+.w{background:var(--mark);border-radius:4px;padding:0 2px;cursor:pointer;border-bottom:2px solid #E8C35A}
+.tip{position:fixed;z-index:50;background:var(--ink);color:#fff;padding:7px 11px;border-radius:9px;font-size:15px;font-weight:700;max-width:260px;pointer-events:none;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.qs{margin:0 0 14px;padding-left:22px}
+.qs li{margin-bottom:4px}
+.task-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.task-row .lbl{flex:none}
+.task-row select{flex:1;font:inherit;font-size:16px;padding:8px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.task-row select.ok{border-color:var(--ok);background:var(--ok-soft)}
+.task-row select.bad{border-color:var(--bad);background:var(--bad-soft)}
+.stmt{margin-bottom:12px}
+.stmt p{margin:0 0 6px;font-weight:700}
+
+/* hard words + final */
+.hard{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.hard span{background:var(--bad-soft);color:var(--bad);border-radius:99px;padding:4px 10px;font-weight:700;font-size:14px}
+.big{font-size:44px;font-weight:900;font-family:var(--font-display);line-height:1;margin:6px 0}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.note{font-size:13px;color:var(--muted);margin-top:10px}
+footer{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
+.task-row .lbl{display:inline-flex;width:30px;height:30px;border-radius:8px;background:var(--teal);color:#fff;font-weight:900;align-items:center;justify-content:center}
+.task-row select{min-width:0;width:100%;text-overflow:ellipsis}
+.fc{height:88px}
+.bar .wrap{flex-direction:column;align-items:stretch;gap:8px}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:6px 14px;font-weight:800;font-size:15px}
+.tab.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.tab.done:not(.on){border-color:var(--ok);color:var(--ok)}
+.tab small{font-weight:900}
+.prog{display:flex;align-items:center;gap:12px}
+.hint{color:var(--muted);font-family:ui-monospace,Menlo,monospace;letter-spacing:2px;font-weight:600}
+.rule{font-size:13.5px;color:var(--teal);font-weight:700;margin-top:3px}
+.intro{margin:18px 0 0;padding:12px 14px;background:var(--teal-soft);border-radius:12px;color:var(--teal);font-weight:700;font-size:15px}
+.next{display:block;width:100%;margin-top:18px;padding:14px;font-size:17px}
+.mcol{display:flex;flex-direction:column;gap:8px}
+.ttl{margin:0 0 10px;text-align:center;font-size:20px}
+.tiles{gap:5px}
+.slots .tile{display:inline-flex;align-items:center;justify-content:center}
+.tab{padding:6px 11px;font-size:14px}
+.cover{display:block;width:100%;border-radius:14px;margin-top:14px}
+</style></head><body>
+<header class="hero wrap"><p class="eyebrow"><a href="./" style="color:inherit;text-decoration:none">← True / False / Not stated</a> · Текст 6</p><h1>David Beckham — Дэвид Бекхэм</h1><p class="sub">30 новых слов из текста ОГЭ «David Beckham».</p></header>
+<div class="bar"><div class="wrap"><nav class="tabs" id="tabs"></nav><div class="prog"><div class="track"><div class="fill" id="fill"></div></div><span class="count" id="cnt"></span></div></div></div>
+<main class="wrap" id="main"></main>
+<footer class="wrap"><a href="./" style="color:inherit">Все тексты</a> · Ответы сохраняются в этом браузере</footer>
+<script>
+const L = {
+  id: "t06", short: "Урок 11 · David Beckham",
+  eyebrow: "ОГЭ · Чтение · True / False / Not stated · Урок 11",
+  title: "David Beckham — Дэвид Бекхэм",
+  sub: "30 новых слов из текста ОГЭ «David Beckham».",
+  words: [
+    { id: "lovable", en: "lovable", ru: "милый, всеми любимый", pos: "adj", gap: "David Beckham – is there a more famous and ___ celebrity?", ans: "lovable" },
+    { id: "celebrity", en: "celebrity", ru: "знаменитость", pos: "n", gap: "David Beckham – is there a more famous and lovable ___?", ans: "celebrity" },
+    { id: "successful", en: "successful", ru: "успешный", pos: "adj", gap: "The footballer is also a fashion model and a ___ businessman.", ans: "successful" },
+    { id: "relative", en: "relative", ru: "родственник", pos: "n", hl: ["relatives"], gap: "David grew up with parents and ___ who were great fans of Manchester United.", ans: "relatives" },
+    { id: "legendary", en: "legendary", ru: "легендарный", pos: "adj", gap: "Manchester United is England’s ___ football club.", ans: "legendary" },
+    { id: "childhood", en: "childhood", ru: "детство", pos: "n", gap: "From ___, David was a promising footballer.", ans: "childhood" },
+    { id: "promising", en: "promising", ru: "многообещающий, перспективный", pos: "adj", gap: "From childhood, David was a ___ footballer.", ans: "promising" },
+    { id: "prestigious", en: "prestigious", ru: "престижный", pos: "adj", gap: "At 11 he won the ___ Bobby Charlton Soccer Schools National Skills Competition.", ans: "prestigious" },
+    { id: "notice", en: "notice", ru: "заметить", pos: "v", hl: ["noticed"], gap: "David was ___ by Manchester United team officials.", ans: "noticed" },
+    { id: "tryout", en: "try out (for)", ru: "пройти пробы, попробовать себя", pos: "ph", alt: ["try out for"], gap: "They asked him to ___ for the club’s youth league.", ans: "try out" },
+    { id: "dropout", en: "drop out (of school)", ru: "бросить (школу)", pos: "ph", gap: "By the age of 16, Beckham had to ___ of school.", ans: "drop out" },
+    { id: "score", en: "score", ru: "забить (гол)", pos: "v", hl: ["scored"], gap: "From 1992 to 2003, playing for Manchester United, David Beckham ___ 85 goals.", ans: "scored" },
+    { id: "ritual", en: "ritual", ru: "ритуал", pos: "n", gap: "He wore different football boots – it was a sort of ___ for good luck.", ans: "ritual" },
+    { id: "unexpectedly", en: "unexpectedly", ru: "неожиданно", pos: "adv", gap: "In 2003, David ___ left his beloved team for Real Madrid.", ans: "unexpectedly" },
+    { id: "beloved", en: "beloved", ru: "любимый", pos: "adj", gap: "In 2003, David unexpectedly left his ___ team for Real Madrid.", ans: "beloved" },
+    { id: "conflict", en: "conflict", ru: "конфликт", pos: "n", gap: "The reason was the growing ___ between David Beckham and Manchester’s manager.", ans: "conflict" },
+    { id: "fine", en: "fine", ru: "оштрафовать; штраф", pos: "v", hl: ["fined", "fine"], gap: "Once Sir Alex Ferguson ___ David for babysitting with his sick child.", ans: "fined" },
+    { id: "babysit", en: "babysit", ru: "сидеть с ребёнком", pos: "v", hl: ["babysitting"], gap: "Sir Alex Ferguson fined David for ___ with his sick child.", ans: "babysitting" },
+    { id: "tension", en: "tension", ru: "напряжение", pos: "n", gap: "The incident caused a serious personal ___ between the two men.", ans: "tension" },
+    { id: "allow", en: "allow", ru: "разрешать", pos: "v", hl: ["allowed"], gap: "In Real Madrid, David Beckham was not ___ to wear his favourite number seven.", ans: "allowed" },
+    { id: "contract", en: "contract", ru: "контракт", pos: "n", gap: "The right to wear it was written into the ___ of another player.", ans: "contract" },
+    { id: "instead", en: "instead", ru: "вместо этого", pos: "adv", gap: "___, David decided to wear a shirt with number 23.", ans: "Instead" },
+    { id: "sign", en: "sign", ru: "подписать", pos: "v", hl: ["signed"], gap: "In 2007 Beckham ___ a five-year contract to play for the Los Angeles Galaxy.", ans: "signed" },
+    { id: "career", en: "career", ru: "карьера", pos: "n", gap: "However, his ___ in America was a rocky one.", ans: "career" },
+    { id: "injury", en: "injury", ru: "травма", pos: "n", hl: ["injuries"], gap: "Numerous ___ affected him.", ans: "injuries" },
+    { id: "affect", en: "affect", ru: "влиять, повлиять", pos: "v", hl: ["affected"], gap: "Numerous injuries ___ him.", ans: "affected" },
+    { id: "announce", en: "announce", ru: "объявить", pos: "v", hl: ["announced"], gap: "In May 2013, David Beckham ___ his plans to retire.", ans: "announced" },
+    { id: "retire", en: "retire", ru: "уйти на пенсию, завершить карьеру", pos: "v", gap: "In May 2013, David Beckham announced his plans to ___.", ans: "retire" },
+    { id: "devoted", en: "devoted", ru: "преданный", pos: "adj", gap: "David Beckham has always been a ___ husband and a loving father.", ans: "devoted" },
+    { id: "protect", en: "protect", ru: "защищать", pos: "v", gap: "They will all be ready to ___ her from noisy fans.", ans: "protect" }
+  ],
+  forms: [
+    { id: "successful", s: "She is a very ___ singer.", o: ["success", "successful", "successfully"], a: "successful", ru: "-ful → прилагательное" },
+    { id: "successful", s: "Good luck! I wish you ___!", o: ["success", "successful", "successfully"], a: "success" },
+    { id: "childhood", s: "I had a happy ___.", o: ["child", "childhood", "children"], a: "childhood" },
+    { id: "promising", s: "He ___ to help me, but he forgot.", o: ["promised", "promising", "promise"], a: "promised", ru: "promise — обещать; promising — многообещающий" },
+    { id: "notice", s: "I didn’t ___ him in the crowd.", o: ["notice", "noticed", "noticing"], a: "notice", ru: "didn’t + глагол в начальной форме" },
+    { id: "score", s: "He ___ two goals in yesterday’s match.", o: ["scores", "scored", "has scored"], a: "scored", ru: "yesterday → Past Simple" },
+    { id: "unexpectedly", s: "The guests arrived ___.", o: ["unexpected", "unexpectedly"], a: "unexpectedly", ru: "-ly — наречие, описывает глагол" },
+    { id: "allow", s: "My parents don’t allow me ___ late.", o: ["stay", "to stay", "staying"], a: "to stay", ru: "allow somebody to do" },
+    { id: "allow", s: "Phones are not ___ in class.", o: ["allow", "allowed", "allowing"], a: "allowed", ru: "are + V3 — пассив" },
+    { id: "instead", s: "Let’s walk instead ___ taking the bus.", o: ["of", "from", "to"], a: "of", ru: "instead of + -ing / сущ." },
+    { id: "injury", s: "He ___ his leg while playing football.", o: ["injury", "injured", "injure"], a: "injured" },
+    { id: "announce", s: "They made an important ___ at the station.", o: ["announce", "announcement", "announced"], a: "announcement", ru: "-ment → существительное" },
+    { id: "retire", s: "My grandfather ___ last year. Now he is a pensioner.", o: ["retire", "retired", "retirement"], a: "retired" },
+    { id: "devoted", s: "She is devoted ___ her family.", o: ["to", "for", "with"], a: "to", ru: "devoted to — предан кому-то" },
+    { id: "protect", s: "Sunglasses protect your eyes ___ the sun.", o: ["from", "of", "at"], a: "from", ru: "protect from — защищать от" }
+  ],
+  task: {
+    type: "tfns", title: "David Beckham",
+    paras: [
+      "David Beckham – is there a more famous and lovable celebrity? The footballer who played for such famous teams as Manchester United and Real Madrid is also a fashion model and a successful businessman.",
+      "David Beckham was born on May 2, 1975, in London, England. His father Ted Beckham was a kitchen fitter and his mother Sandra, a hair stylist. David Beckham was the family's only son. A middle child between two sisters, David grew up with parents and relatives who were great fans of Manchester United, England’s legendary football club. From childhood, David was a promising footballer. At 11 he won the prestigious Bobby Charlton Soccer Schools National Skills Competition. David was noticed by Manchester United team officials, who asked him to try out for the club’s youth league. By the age of 16, Beckham had to drop out of school. He left home to play for his favourite team. Two years later he became a full-time player for Manchester United and one of its leading figures.",
+      "From 1992 to 2003, playing for Manchester United, David Beckham scored 85 goals. Every time he had a game, he wore different football boots – it was a sort of ritual for good luck. In 2003, David unexpectedly left his beloved team for Real Madrid. The reason was the growing conflict between David Beckham and Manchester’s manager, Sir Alex Ferguson. Once Sir Alex Ferguson fined David for babysitting with his sick child, while his wife Victoria, a designer, was at a London Fashion Week Event. The fine was really large. The incident caused a serious personal tension between the two men and ended in Beckham moving to the other club.",
+      "In Real Madrid, David Beckham was not allowed to wear his favourite number seven, because the right to wear it was written into the contract of another player. Instead, David decided to wear a shirt with number 23, which was the number of his favourite basketball player Michael Jordan. Though David Beckham immediately became very popular with the Real Madrid fans and his shirt sales made a lot of money for the football club, the team didn’t win any serious tournaments. Perhaps, it was one of the reasons why in 2007 Beckham signed a five-year contract to play for the Los Angeles Galaxy and moved to America. However, his career in America was a rocky one – numerous injuries affected him. In May 2013, David Beckham announced his plans to retire.",
+      "It’s important to say that David Beckham has always been a devoted husband and a loving father. David and his wife Victoria have three sons and a daughter. They say the boys are being trained as ‘bodyguards’ for their little sister Harper. The youngest, Cruz, has been practicing Taekwondo, Brooklyn is interested in boxing, and the oldest, Romeo, does karate. They are preparing early so that when Harper is older, “they will all be ready to protect her from noisy fans,” David says."
+    ],
+    st: [
+      { s: "David Beckham’s parents were professional sportsmen.", a: 2 },
+      { s: "David Beckham’s school teachers supported his interest in football.", a: 3 },
+      { s: "When he was with Manchester United, David Beckham played all the games in the same lucky boots.", a: 2 },
+      { s: "David Beckham left Manchester United because he had problems with the team manager.", a: 1 },
+      { s: "David Beckham wore the same number in Manchester United and Real Madrid.", a: 2 },
+      { s: "David Beckham left Real Madrid for an American football club.", a: 1 },
+      { s: "The Beckhams’ sons want to become professional sportsmen.", a: 3 }
+    ]
+  }
+};
+
+L.eyebrow = "ОГЭ · True / False / Not stated · Текст 6"; L.short = "True / False / Not stated · Текст 6 · David Beckham";
+/* ===== David · OGE vocabulary engine. Expects const L = {...} defined before. ===== */
+(function () {
+const W = L.words, byId = Object.fromEntries(W.map(w => [w.id, w]));
+const $ = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
+const norm = s => (s || "").toLowerCase().replace(/[’‘`]/g, "'").replace(/[.!?,;:]+/g, " ").replace(/\s+/g, " ").trim();
+
+/* seeded random, so the page looks the same after reload */
+let seed = [...L.id].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
+const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+const shuffle = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pick = (pool, n, not) => shuffle(pool.filter(x => !not.includes(x))).slice(0, n);
+
+/* saved state */
+const KEY = "oge-reading-" + L.id;
+let S = {}; try { S = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { S = {}; }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+function mark(key, wid, ok, v) { if (S[key]) return; S[key] = { w: wid, ok: ok, v: v }; save(); upd(); }
+
+/* speech */
+let voice = null;
+function pickVoice() { const vs = speechSynthesis.getVoices(); voice = vs.find(v => /en[-_]GB/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || null; }
+if ("speechSynthesis" in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function say(text) { if (!("speechSynthesis" in window)) return; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = "en-GB"; if (voice) u.voice = voice; u.rate = .85; speechSynthesis.speak(u); }
+const sayBtn = text => { const b = $("button", "say", "🔊"); b.type = "button"; b.setAttribute("aria-label", "Послушать"); b.onclick = e => { e.stopPropagation(); say(text); }; return b; };
+
+/* ===== layout: tabs ===== */
+const main = document.getElementById("main");
+const tabsNav = document.getElementById("tabs");
+const TABS = [];
+let CUR = null, secN = 0;
+function newTab(label, title) {
+  const btn = $("button", "tab", label); btn.type = "button"; const cnt = $("small"); btn.append(cnt); tabsNav.append(btn);
+  const pane = $("div", "pane"); pane.hidden = true; main.append(pane);
+  const t = { btn, cnt, pane, keys: [], sections: [], title }; TABS.push(t);
+  btn.onclick = () => showTab(TABS.indexOf(t), true); CUR = t; secN = 0; return t;
+}
+function showTab(i, scroll) {
+  TABS.forEach((t, j) => { t.pane.hidden = j !== i; t.btn.classList.toggle("on", j === i); });
+  try { localStorage.setItem(KEY + "-tab", i); } catch (e) {}
+  if (scroll) window.scrollTo({ top: document.querySelector(".bar").offsetTop, behavior: "smooth" });
+  upd();
+}
+function section(title, instr) {
+  const s = $("section", "ex"); const h = $("div", "ex-head"); const h2 = $("h2");
+  h2.append($("span", "n", ++secN), title); const pill = $("span", "pill"); h.append(h2, pill); s.append(h);
+  if (instr) s.append($("p", "instr", instr));
+  CUR.pane.append(s); const rec = { s, pill, keys: [], tab: CUR, id: "t" + TABS.length + "s" + secN }; CUR.sections.push(rec); return rec;
+}
+function regKey(rec, i) { const key = rec.id + "-" + i; rec.keys.push(key); rec.tab.keys.push(key); return key; }
+
+/* MCQ item */
+function fillGap(q, ans) { const g = q.querySelector(".gap"); if (g) g.textContent = ans; }
+function qLine(k, html) { const p = $("p", "q"); p.append($("span", "k", k + ".")); const t = $("span"); t.innerHTML = html; p.append(t); return p; }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const gapHtml = s => esc(s).replace("___", '<span class="gap">&nbsp;</span>');
+function mcq(rec, i, wid, qNode, options, answer) {
+  const key = regKey(rec, i);
+  const it = $("div", "it"); it.append(qNode); const box = $("div", "opts"); it.append(box);
+  const btns = options.map(o => { const b = $("button", "opt", o); b.type = "button"; box.append(b); return b; });
+  const lock = chosen => { box.classList.add("locked"); btns.forEach(b => { b.disabled = true; if (b.textContent === answer) b.classList.add("ok"); else if (b.textContent === chosen) b.classList.add("bad"); }); fillGap(qNode, answer); };
+  btns.forEach(b => b.onclick = () => { const ok = b.textContent === answer; mark(key, wid, ok, b.textContent); lock(b.textContent); if (rec.speak) say(answer); });
+  if (S[key]) lock(S[key].v);
+  return it;
+}
+/* typing item */
+const hint = en => en.split(" ").map(p => p[0] + "_".repeat(Math.max(0, p.length - 1))).join("  ");
+const hintHtml = w => esc(w.ru) + ' &nbsp;<span class="hint">' + esc(hint(w.en)) + "</span>";
+function typing(rec, i, wid, qNode, answers, opts = {}) {
+  const key = regKey(rec, i);
+  const it = $("div", "it"); it.append(qNode);
+  const row = $("div", "row"); const inp = $("input", "inp"); inp.type = "text"; inp.autocomplete = "off"; inp.autocapitalize = "off"; inp.spellcheck = false; inp.setAttribute("autocorrect", "off");
+  if (opts.ph) inp.placeholder = opts.ph;
+  const b = $("button", "btn", "OK"); b.type = "button"; row.append(inp, b); it.append(row);
+  const fb = $("div", "fb"); it.append(fb);
+  const lock = (v, ok) => { inp.value = v; inp.disabled = true; b.style.display = "none"; inp.classList.add(ok ? "ok" : "bad");
+    fb.className = "fb " + (ok ? "ok" : "bad"); fb.innerHTML = ok ? "Верно! " : 'Правильно: <span class="right">' + esc(answers[0]) + "</span> "; fb.append(sayBtn(answers[0])); };
+  const check = () => { const v = inp.value.trim(); if (!v) return; const ok = answers.some(a => norm(a) === norm(v)); mark(key, wid, ok, v); lock(v, ok); say(answers[0]); };
+  b.onclick = check; inp.onkeydown = e => { if (e.key === "Enter") check(); };
+  if (S[key]) lock(S[key].v, S[key].ok);
+  return it;
+}
+const answersOf = w => [w.en, ...(w.alt || [])];
+
+/* ===== exercise builders ===== */
+function exCards(ws) {
+  const r = section("Новые слова", "Нажми на карточку — увидишь перевод. 🔊 — послушай. Проговори каждое слово вслух.");
+  const g = $("div", "cards");
+  ws.forEach(w => { const c = $("button", "fc"); c.type = "button"; const inn = $("div", "fc-in"); const f = $("div", "fc-f"); f.append($("b", null, w.en));
+    inn.append(f, $("div", "fc-b", w.ru)); c.append(inn, sayBtn(w.en)); c.onclick = () => { c.classList.toggle("flip"); if (c.classList.contains("flip")) say(w.en); }; g.append(c); });
+  r.s.append(g); r.pill.textContent = ws.length + " слов"; r.static = true;
+}
+function exMatch(ws) {
+  const r = section("Соедини пары", "Нажми на английское слово, потом на его перевод.");
+  const sh = shuffle(ws); const groups = []; for (let i = 0; i < sh.length; i += 5) groups.push(sh.slice(i, i + 5));
+  if (groups.length > 1 && groups[groups.length - 1].length < 3) groups[groups.length - 2].push(...groups.pop());
+  let idx = 0;
+  groups.forEach(gr => {
+    const box = $("div", "mgroup"); const c1 = $("div", "mcol"), c2 = $("div", "mcol"); box.append(c1, c2);
+    let sel = null; const miss = {}; const lb = {}, rb = {};
+    const items = gr.map(w => ({ w, key: regKey(r, idx++) }));
+    items.forEach(it => { const b = $("button", "opt", it.w.en); b.type = "button"; lb[it.w.id] = b; b.onclick = () => { if (b.classList.contains("gone")) return; Object.values(lb).forEach(x => x.classList.remove("sel")); b.classList.add("sel"); sel = it; say(it.w.en); }; c1.append(b); });
+    shuffle(items).forEach(({ w }) => { const b = $("button", "opt", w.ru); b.type = "button"; rb[w.id] = b; c2.append(b);
+      b.onclick = () => { if (!sel || b.classList.contains("gone")) return;
+        if (sel.w.id === w.id) { lb[w.id].classList.remove("sel"); lb[w.id].classList.add("gone"); b.classList.add("gone"); mark(sel.key, w.id, !miss[w.id], w.ru); sel = null; }
+        else { miss[sel.w.id] = true; b.classList.add("shake"); setTimeout(() => b.classList.remove("shake"), 400); } }; });
+    items.forEach(({ w, key }) => { if (S[key]) { lb[w.id].classList.add("gone"); rb[w.id].classList.add("gone"); } });
+    r.s.append(box);
+  });
+}
+function exEnRu(ws) {
+  const r = section("Выбери перевод", "Что значит это слово?");
+  const box = $("div", "items"); const pool = W.map(w => w.ru);
+  shuffle(ws).forEach((w, i) => { const q = qLine(i + 1, "<b>" + esc(w.en) + "</b>"); q.append(sayBtn(w.en)); box.append(mcq(r, i, w.id, q, shuffle([w.ru, ...pick(ws.map(x => x.ru).concat(pool).filter((x, j, a) => a.indexOf(x) === j), 3, [w.ru])]), w.ru)); });
+  r.s.append(box);
+}
+function exRuEn(ws) {
+  const r = section("Как это по-английски?", "Выбери английское слово.");
+  r.speak = true; const box = $("div", "items"); const pool = ws.map(x => x.en);
+  shuffle(ws).forEach((w, i) => box.append(mcq(r, i, w.id, qLine(i + 1, esc(w.ru)), shuffle([w.en, ...pick(pool, 3, [w.en])]), w.en)));
+  r.s.append(box);
+}
+function exGap(ws) {
+  const r = section("Вставь слово", "Это предложения из текста ОГЭ. Выбери слово, которое подходит.");
+  r.speak = true; const box = $("div", "items");
+  shuffle(ws.filter(w => w.gap)).forEach((w, i) => {
+    const same = ws.filter(x => x.pos === w.pos && x.id !== w.id).map(x => x.ans);
+    const pool = same.length >= 3 ? same : ws.filter(x => x.id !== w.id).map(x => x.ans);
+    box.append(mcq(r, i, w.id, qLine(i + 1, gapHtml(w.gap)), shuffle([w.ans, ...pick(pool, 3, [w.ans])]), w.ans));
+  });
+  r.s.append(box);
+}
+function exForms(fs) {
+  if (!fs.length) return;
+  const r = section("Выбери правильную форму", "Какое время? Какое слово нужно — глагол, существительное или прилагательное?");
+  r.speak = true; const box = $("div", "items");
+  fs.forEach((f, i) => { const q = qLine(i + 1, gapHtml(f.s)); if (f.ru) q.append($("div", "rule", f.ru)); box.append(mcq(r, i, f.id, q, shuffle(f.o), f.a)); });
+  r.s.append(box);
+}
+function exScramble(ws) {
+  const list = shuffle(ws.filter(w => /^[a-z]+$/i.test(w.en) && w.en.length >= 4));
+  if (!list.length) return;
+  const r = section("Собери слово", "Нажимай на буквы по порядку. Ошибся — нажми на букву в ответе, она вернётся назад.");
+  const box = $("div", "items");
+  list.forEach((w, i) => {
+    const key = regKey(r, i);
+    const it = $("div", "it"); it.append(qLine(i + 1, esc(w.ru)));
+    const slots = $("div", "slots"); const pool = $("div", "opts tiles"); it.append(slots, pool); const fb = $("div", "fb"); it.append(fb);
+    let letters = shuffle([...w.en.toLowerCase()]); if (letters.join("") === w.en.toLowerCase()) letters = letters.reverse();
+    let wrong = false; const chosen = [];
+    const done = ok => { slots.innerHTML = ""; [...w.en].forEach(ch => slots.append($("span", "tile", ch))); pool.remove(); fb.className = "fb " + (ok ? "ok" : "bad"); fb.textContent = ok ? "Верно! " : "Получилось не с первого раза "; fb.append(sayBtn(w.en)); slots.style.borderColor = ok ? "var(--ok)" : "var(--bad)"; };
+    letters.forEach(ch => { const t = $("button", "tile", ch); t.type = "button"; pool.append(t);
+      t.onclick = () => { if (t.classList.contains("used")) return; t.classList.add("used"); const s = $("button", "tile", ch); s.type = "button"; slots.append(s); chosen.push({ t, s });
+        s.onclick = () => { t.classList.remove("used"); s.remove(); chosen.splice(chosen.findIndex(c => c.s === s), 1); };
+        if (chosen.length === letters.length) { const v = chosen.map(c => c.s.textContent).join("");
+          if (v === w.en.toLowerCase()) { mark(key, w.id, !wrong, v); done(!wrong); say(w.en); }
+          else { wrong = true; fb.className = "fb bad"; fb.textContent = "Не так. Нажми на буквы в ответе и попробуй ещё раз."; } } }; });
+    if (S[key]) done(S[key].ok);
+    box.append(it);
+  });
+  r.s.append(box);
+}
+function exType(ws, title) {
+  const r = section(title || "Напиши по-английски", "Подсказка: первая буква и сколько всего букв. Нажми OK или Enter.");
+  const box = $("div", "items");
+  shuffle(ws).forEach((w, i) => box.append(typing(r, i, w.id, qLine(i + 1, hintHtml(w)), answersOf(w))));
+  r.s.append(box);
+}
+function exListen(ws) {
+  const r = section("Послушай и напиши", "Нажми 🔊, послушай слово (можно несколько раз) и напиши его.");
+  const box = $("div", "items");
+  shuffle(ws).forEach((w, i) => { const q = $("p", "q"); q.append($("span", "k", (i + 1) + ".")); const b = $("button", "btn ghost", "🔊 Слушать"); b.type = "button"; b.onclick = () => say(w.en); q.append(b); box.append(typing(r, i, w.id, q, answersOf(w), { ph: "напиши, что услышал" })); });
+  r.s.append(box);
+}
+function exRetry(getWords, title, instr) {
+  const r = section(title, instr); r.static = true; r.pill.textContent = "🔁";
+  const box = $("div"); r.s.append(box); r.render = () => {
+    box.innerHTML = ""; const hw = getWords();
+    if (!hw.length) { box.append($("p", "note", "Ошибок нет. Так держать! 💪")); return; }
+    const chips = $("div", "hard"); hw.forEach(w => chips.append($("span", null, w.en + " — " + w.ru))); box.append(chips);
+    const b = $("button", "btn", "Повторить эти слова"); b.type = "button"; box.append(b);
+    b.onclick = () => { b.remove(); const list = $("div", "items"); list.style.marginTop = "12px";
+      shuffle(hw).forEach((w, i) => { const it = $("div", "it"); it.append(qLine(i + 1, hintHtml(w)));
+        const row = $("div", "row"); const inp = $("input", "inp"); inp.autocapitalize = "off"; inp.autocomplete = "off"; inp.spellcheck = false; const ok = $("button", "btn", "OK"); ok.type = "button"; row.append(inp, ok); const fb = $("div", "fb"); it.append(row, fb);
+        const chk = () => { const good = answersOf(w).some(a => norm(a) === norm(inp.value)); say(w.en); if (good) { inp.className = "inp ok"; inp.disabled = true; ok.remove(); fb.className = "fb ok"; fb.textContent = "Верно!"; } else { inp.className = "inp bad"; fb.className = "fb bad"; fb.innerHTML = 'Правильно: <span class="right">' + esc(w.en) + "</span> — напиши ещё раз"; inp.value = ""; inp.focus(); } };
+        ok.onclick = chk; inp.onkeydown = e => { if (e.key === "Enter") chk(); }; list.append(it); });
+      box.append(list); r.frozen = true; };
+  };
+  return r;
+}
+const RETRY = [];
+function hardWords(keys) { const h = {}; keys.forEach(k => { const x = S[k]; if (x && x.w && !x.ok) h[x.w] = 1; }); return Object.keys(h).filter(id => byId[id]).map(id => byId[id]); }
+function nextBtn(i, label) { const b = $("button", "btn next", label); b.type = "button"; b.onclick = () => showTab(i, true); CUR.pane.append(b); }
+
+/* ===== text highlighting ===== */
+const forms = []; W.forEach(w => { [w.en, w.ans, ...(w.hl || [])].filter(Boolean).forEach(f => forms.push([f.toLowerCase().replace(/’/g, "'"), w])); });
+forms.sort((a, b) => b[0].length - a[0].length);
+const re = new RegExp("\\b(" + forms.map(f => f[0].replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/'/g, "['’]")).join("|") + ")\\b", "gi");
+const fmap = Object.fromEntries(forms.map(f => [f[0], f[1]]));
+function hl(text) { return esc(text).replace(re, m => { const w = fmap[m.toLowerCase().replace(/’/g, "'")]; return w ? '<span class="w" data-ru="' + esc(w.ru) + '" data-en="' + esc(w.en) + '">' + m + "</span>" : m; }); }
+const tip = $("div", "tip"); tip.style.display = "none"; document.body.append(tip);
+document.addEventListener("click", e => { const t = e.target.closest(".w"); if (!t) { tip.style.display = "none"; return; } say(t.dataset.en); tip.textContent = t.dataset.ru; tip.style.display = "block"; const rc = t.getBoundingClientRect(); tip.style.left = Math.max(8, Math.min(innerWidth - 270, rc.left)) + "px"; tip.style.top = (rc.bottom + 6) + "px"; });
+addEventListener("scroll", () => tip.style.display = "none", { passive: true });
+
+/* ===== build tabs ===== */
+const N = 3, size = Math.ceil(W.length / N);
+const parts = []; for (let i = 0; i < N; i++) parts.push(W.slice(i * size, (i + 1) * size));
+parts.forEach((ws, i) => {
+  const t = newTab("Часть " + (i + 1), ws);
+  const ids = new Set(ws.map(w => w.id));
+  exCards(ws); exMatch(ws); exEnRu(ws); exRuEn(ws); exGap(ws);
+  exForms((L.forms || []).filter(f => ids.has(f.id)));
+  exScramble(ws); exType(ws); exListen(ws);
+  RETRY.push({ r: exRetry(() => hardWords(t.keys), "Работа над ошибками", "Слова этой части, в которых ты ошибся. Напиши их ещё раз."), t });
+  nextBtn(i + 1, i < N - 1 ? "Дальше → Часть " + (i + 2) : "Дальше → Всё вместе");
+});
+{
+  const t = newTab("Всё вместе", W);
+  t.pane.append($("p", "intro", "Все 30 слов вперемешку. Сделай эту вкладку, когда пройдёшь три части — лучше на следующий день."));
+  exMatch(W); exGap(W); exType(W, "Напиши по-английски — все слова");
+  const r = section("Прочитай текст", "Это настоящий текст из ОГЭ. Новые слова выделены — нажми на слово, если забыл перевод.");
+  r.static = true; r.pill.textContent = "📖";
+  const tx = $("div", "text");
+  if (L.task.title) tx.append($("h3", "ttl", L.task.title));
+  if (L.task.parts) L.task.parts.forEach(p => { const el = $("p"); el.innerHTML = '<span class="lbl">' + p.l + "</span>" + hl(p.t); tx.append(el); });
+  else L.task.paras.forEach(p => { const el = $("p"); el.innerHTML = hl(p); tx.append(el); });
+  r.s.append(tx);
+  const T = L.task;
+  if (T.type === "headings") {
+    const r2 = section("Задание ОГЭ", "Определи, в каком тексте A–F есть ответ на каждый вопрос 1–7. Один вопрос лишний. Можно листать вверх и перечитывать текст.");
+    const ol = $("ol", "qs"); T.questions.forEach(q => ol.append($("li", null, q))); r2.s.append(ol);
+    const sels = {};
+    T.parts.forEach((p, i) => { const key = regKey(r2, i); const row = $("div", "task-row"); row.append($("span", "lbl", p.l));
+      const s = $("select"); s.append(new Option("— номер вопроса —", "")); T.questions.forEach((q, j) => s.append(new Option(String(j + 1), j + 1))); row.append(s); r2.s.append(row); sels[p.l] = { s, key }; });
+    const b = $("button", "btn teal", "Проверить"); b.type = "button"; const fb = $("div", "fb"); r2.s.append(b, fb);
+    const show = () => { let n = 0; T.parts.forEach(p => { const { s, key } = sels[p.l]; s.value = S[key].v; const ok = +S[key].v === T.key[p.l]; if (ok) n++; s.className = ok ? "ok" : "bad"; s.disabled = true; }); b.style.display = "none"; fb.className = "fb " + (n === T.parts.length ? "ok" : "bad"); fb.innerHTML = "Правильно " + n + " из " + T.parts.length + ". " + (n < T.parts.length ? "Ответы: " + T.parts.map(p => p.l + "–" + T.key[p.l]).join(", ") + ". Лишний вопрос — " + T.extra + "." : "Отлично!"); };
+    b.onclick = () => { if (T.parts.some(p => !sels[p.l].s.value)) { fb.className = "fb bad"; fb.textContent = "Выбери номер вопроса для каждого текста."; return; } T.parts.forEach(p => { const { s, key } = sels[p.l]; mark(key, null, +s.value === T.key[p.l], s.value); }); show(); };
+    if (T.parts.every(p => S[sels[p.l].key])) show();
+  } else {
+    const r2 = section("Задание ОГЭ", "True — так сказано в тексте. False — в тексте сказано обратное. Not stated — в тексте об этом ничего нет.");
+    const box = $("div", "items"); const lab = ["True", "False", "Not stated"];
+    T.st.forEach((st, i) => box.append(mcq(r2, i, null, qLine(i + 1, esc(st.s)), lab, lab[st.a - 1])));
+    r2.s.append(box);
+  }
+  RETRY.push({ r: exRetry(() => hardWords(Object.keys(S)), "Все трудные слова урока", "Все слова, в которых были ошибки, во всех частях. Повтори их ещё раз."), t });
+  const fin = section("Мой результат", null); fin.static = true; fin.pill.textContent = "🏁";
+  const finBox = $("div"); fin.s.append(finBox);
+  window.__renderFin = () => {
+    const all = TABS.flatMap(t => t.keys); const done = all.filter(k => S[k]).length, ok = all.filter(k => S[k] && S[k].ok).length; const pct = done ? Math.round(ok / done * 100) : 0;
+    finBox.innerHTML = ""; finBox.append($("div", "big", done + " / " + all.length));
+    const lines = TABS.map(t => t.btn.firstChild.textContent + ": " + t.keys.filter(k => S[k]).length + "/" + t.keys.length);
+    finBox.append($("p", "note", "Выполнено " + done + " заданий из " + all.length + (done ? ", с первого раза верно " + pct + "%" : "") + ". " + lines.join(" · ")));
+    const a = $("div", "actions");
+    const send = $("button", "btn teal", "Отправить результат учителю"); send.type = "button";
+    send.onclick = async () => { let nm = ""; try { nm = localStorage.getItem("oge-reading-name") || ""; } catch (e) {} if (!nm) { nm = (prompt("Как тебя зовут? (имя увидит учитель)") || "").trim(); if (!nm) return; try { localStorage.setItem("oge-reading-name", nm); } catch (e) {} } const hw = hardWords(Object.keys(S)); const txt = nm + " · " + L.short + "\n" + lines.join("\n") + "\nВсего: " + done + "/" + all.length + ", верно с первого раза " + pct + "%\n" + (hw.length ? "Трудные слова: " + hw.map(w => w.en).join(", ") : "Ошибок нет!");
+      try { if (navigator.share) { await navigator.share({ text: txt }); return; } } catch (e) { if (e && e.name === "AbortError") return; }
+      try { await navigator.clipboard.writeText(txt); send.textContent = "Скопировано — вставь в сообщение ✓"; } catch (e) { prompt("Скопируй и отправь:", txt); } };
+    const reset = $("button", "btn ghost", "Начать урок заново"); reset.type = "button";
+    reset.onclick = () => { if (confirm("Стереть все ответы во всех частях и начать заново?")) { S = {}; save(); location.reload(); } };
+    a.append(send, reset); finBox.append(a);
+  };
+}
+
+/* ===== progress ===== */
+function upd() {
+  const t = TABS.find(t => !t.pane.hidden) || TABS[0];
+  const d = t.keys.filter(k => S[k]).length;
+  document.getElementById("cnt").innerHTML = d + " <small>/ " + t.keys.length + "</small>";
+  document.getElementById("fill").style.width = (t.keys.length ? d / t.keys.length * 100 : 0) + "%";
+  TABS.forEach(x => { const n = x.keys.filter(k => S[k]).length; x.cnt.textContent = n === x.keys.length ? " ✓" : ""; x.btn.classList.toggle("done", n === x.keys.length); });
+  TABS.forEach(x => x.sections.forEach(r => { if (r.static) return; const n = r.keys.filter(k => S[k]).length; r.pill.textContent = n + " / " + r.keys.length; r.pill.classList.toggle("done", n === r.keys.length); }));
+  RETRY.forEach(x => { if (!x.r.frozen) x.r.render(); });
+  window.__renderFin && window.__renderFin();
+}
+let start = 0; try { start = +(localStorage.getItem(KEY + "-tab") || 0); } catch (e) {}
+showTab(Math.min(start, TABS.length - 1), false);
+})();
+
+</script></body></html>
